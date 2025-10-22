@@ -1,0 +1,70 @@
+{
+  "ConfigZhanXun": [
+    {
+      "Id": "ZhanXun_config_auto_collect_ZhanXun",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ZhanXunConfig:AutoCollectZhanXunCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Militaryteleportation",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ZhanXunConfig:AutoCollectMilitaryteleportationCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Militarystateteleportation",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ZhanXunConfig:AutoCollectMilitarystateteleportationCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Militarymagic",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ZhanXunConfig:AutoCollectMilitarymagicCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Militarystatemagic",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ZhanXunConfig:AutoCollectMilitarystatemagicCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_City",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ZhanXunConfig:AutoCollectCityCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_EternalWar",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ZhanXunConfig:AutoCollectEternalWarCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Adulthood",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ZhanXunConfig:AutoCollectAdulthoodCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Plunder",
+      "Type": "SLIDER",
+      "FloatVal": 0,
+      "MinVal": 0.0,
+      "MaxVal": 1.0,
+      "Step": 0.05,
+      "Callback": "ZhanXunConfig:AutoCollectPlunderCallBack"
+    },
+    {
+      "Id": "ZhanXun_config_auto_collect_Urbanpopulation",
+      "Type": "TEXT",
+      "DefaultString": "0",
+      "MinVal": 0,
+      "MaxVal": 1000000000,
+      "Step": 1.0,
+      "Callback": "ZhanXunConfig:AutoCollectUrbanpopulationCallBack"
+    }
+  ]
+}

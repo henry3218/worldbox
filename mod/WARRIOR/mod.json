@@ -1,0 +1,12 @@
+{
+    "name": "武极寰宇录",
+    "author": "不适隔门 ，十月公子，凸→＿→凸，看客",
+    "version": "1.8.2",
+    "description": "采用十月骑士模组的原始框架，扩充大量内容成为拥有十二境界的武者模组。模组交流Q群518034720",
+    "iconPath": "icon.png",
+    "targetGameBuild": 115,
+    "GUID":"WARRIOR",
+    "OptionalDependencies": [
+        "TEST"
+    ]
+}

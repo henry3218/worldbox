@@ -1,0 +1,86 @@
+[
+    {
+        "id": "human_name",
+        "templates": [
+             {
+                "format": "{西方名字}#·#{人类名字中缀}#·#{人类姓氏:family_name}",
+                "weight": 25
+            },
+            {
+                "format": "{西方名字}#·#{人类姓氏:family_name}",
+                "weight": 60
+            },
+            {
+                "format": "{人类英雄}#·#{西方名字}#·#{人类名字中缀}#·#{人类姓氏:family_name}",
+                "weight": 5
+            },
+            {
+                "format": "{人类英雄}#·#{西方名字}#·#{人类姓氏:family_name}",
+                "weight": 3
+            }
+        ]
+    },
+    {
+        "id": "elf_name",
+        "templates": [
+            {
+                "format": "{精灵名字}#·#{精灵名字中缀}#·#{精灵姓氏:family_name}",
+                "weight": 25
+            },
+            {
+                "format": "{精灵名字}#·#{精灵姓氏:family_name}",
+                "weight": 60
+            },
+            {
+                "format": "{精灵英雄}#·#{精灵名字}#·#{精灵姓氏:family_name}",
+                "weight": 5
+            },
+            {
+                "format": "{精灵英雄}#·#{精灵名字}#·#{精灵名字中缀}#·#{精灵姓氏:family_name}",
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "id": "orc_name",
+        "templates": [
+            {
+                "format": "{兽人名字}#·#{兽人名字中缀}#·#{兽人姓氏:family_name}",
+                "weight": 25
+            },
+            {
+                "format": "{兽人名字}#·#{兽人姓氏:family_name}",
+                "weight": 60
+            },
+            {
+                "format": "{兽人英雄}#·#{兽人名字}#·#{兽人名字中缀}#·#{兽人姓氏:family_name}",
+                "weight": 5
+            },
+            {
+                "format": "{兽人英雄}#·#{兽人名字}#·#{兽人姓氏:family_name}",
+                "weight": 5
+            }
+        ]
+    },
+    {
+        "id": "dwarf_name",
+        "templates": [
+            {
+                "format": "{矮人名字}#·#{矮人名字中缀}#·#{矮人姓氏:family_name}",
+                "weight": 25
+            },
+            {
+                "format": "{矮人名字}#·#{矮人姓氏:family_name}",
+                "weight": 60
+            },
+            {
+                "format": "{矮人英雄}#·#{矮人名字}#·#{矮人名字中缀}#·#{矮人姓氏:family_name}",
+                "weight": 5
+            },
+            {
+                "format": "{矮人英雄}#·#{矮人名字}#·#{矮人姓氏:family_name}",
+                "weight": 5
+            }
+        ]
+    }
+]

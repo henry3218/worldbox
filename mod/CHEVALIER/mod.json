@@ -1,0 +1,9 @@
+{
+    "name": "圣骑传说",
+    "author": "不适隔门，十月白",
+    "version": "1.36",
+    "description": "拥有丰富内容的西幻圣骑士模组，Q群1046673226",
+    "iconPath": "icon.png",
+    "targetGameBuild": 115,
+    "GUID":"CHEVALIER"
+}

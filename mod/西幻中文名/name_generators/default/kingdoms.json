@@ -1,0 +1,37 @@
+[
+    {
+        "id": "human_kingdom",
+        "templates": [
+            {
+                "format": "{人类国名}"
+            },
+            {
+                "format": "{人类二国名}{人类国名后缀}"
+            }
+        ]
+    },
+    {
+        "id": "elf_kingdom",
+        "templates": [
+            {
+                "format": "{精灵国名}{精灵国名后缀}"
+            }
+        ]
+    },
+    {
+        "id": "orc_kingdom",
+        "templates": [
+            {
+                "format": "{兽人国名}{兽人国名后缀}"
+            }
+        ]
+    },
+    {
+        "id": "dwarf_kingdom",
+        "templates": [
+            {
+                "format": "{矮人国名}{矮人国名后缀}"
+            }
+        ]
+    }
+]

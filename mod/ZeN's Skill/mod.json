@@ -1,0 +1,15 @@
+{
+    "name": "ZeN's Skill",
+    "author": "ZeN-gameboy47394",
+    "version": "0.0.0",
+    "description": "ZeN's attempt at making 2.0",
+    "targetGameBuild": 558,
+    "iconPath": "icon.png",
+    "Dependencies": [],
+    "OptionalDependencies": [],
+    "IncompatibleWith": [],
+    "Locales": [
+        "Locales/en.json",
+        "Locales/ch.json"
+    ]
+}

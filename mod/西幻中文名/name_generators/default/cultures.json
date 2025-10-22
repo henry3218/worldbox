@@ -1,0 +1,34 @@
+[
+    {
+        "id": "human_culture",
+        "templates": [
+            {
+                "format": "{人类文化}#文化#"
+            }
+        ]
+    },
+    {
+        "id": "elf_culture",
+        "templates": [
+            {
+                "format": "{精灵文化}#文化#"
+            }
+        ]
+    },
+    {
+        "id": "orc_culture",
+        "templates": [
+            {
+                "format": "{兽人文化}#文化#"
+            }
+        ]
+    },
+    {
+        "id": "dwarf_culture",
+        "templates": [
+            {
+                "format": "{矮人文化}#文化#"
+            }
+        ]
+    }
+]

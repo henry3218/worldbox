@@ -1,0 +1,136 @@
+{
+  "ConfigItems": [
+    {
+      "Id": "Warrior_config_auto_collect_harmony",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AutoCollectHarmonyCallBack"
+    },
+    {
+      "Id": "Warrior_config_auto_collect_zhanwo",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AutoCollectZhanWoCallBack"
+    },
+    {
+      "Id": "Warrior_config_auto_collect_wuji",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AutoCollectWuJiCallBack"
+    },
+    {
+      "Id": "Warrior_config_auto_collect_xuanzhen",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AutoCollectXuanZhenCallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_wuji",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWuJiCallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_zhanwo",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitZhanWoCallBack"
+    },
+    {
+      "Id": "Warrior_config_breakthrough_limit",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:BreakthroughLimitCallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior9",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior9CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior8",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior8CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior7",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior7CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior6",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior6CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior5",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior5CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior4",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior4CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior3",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior3CallBack"
+    },
+    {
+      "Id": "Warrior_config_limit_warrior2",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "WarriorConfig:LimitWarrior2CallBack"
+    },
+    {
+      "Id": "Warrior_config_allow_warrior_root_awakening",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AllowWarriorRootAwakeningCallBack"
+    },
+    {
+      "Id": "Warrior_config_allow_formation_talent_awakening",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AllowFormationTalentAwakeningCallBack"
+    },
+    {
+      "Id": "Warrior_config_allow_zhanwo_weapon_award",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:AllowZhanWoWeaponAwardCallBack"
+    },
+    {
+      "Id": "Warrior_config_notify_harmony_breakthrough",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:NotifyHarmonyBreakthroughCallBack"
+    },
+    {
+      "Id": "Warrior_config_notify_zhanwo_breakthrough",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:NotifyZhanWoBreakthroughCallBack"
+    },
+    {
+      "Id": "Warrior_config_notify_wuji_breakthrough",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:NotifyWuJiBreakthroughCallBack"
+    },
+    {
+      "Id": "Warrior_config_notify_xuanzhen_breakthrough",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "WarriorConfig:NotifyXuanZhenBreakthroughCallBack"
+    }
+  ]
+}

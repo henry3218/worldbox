@@ -1,0 +1,112 @@
+{
+  "ChevalierConfigItems": [
+    {
+      "Id": "Chevalier_config_auto_collect_lieri",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ChevalierConfig:AutoCollectLieriCallBack"
+    },
+    {
+      "Id": "Chevalier_config_auto_collect_yongyao",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ChevalierConfig:AutoCollectYongyaoCallBack"
+    },
+    {
+      "Id": "Chevalier_config_auto_collect_buxiu",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ChevalierConfig:AutoCollectBuxiuCallBack"
+    },
+    {
+      "Id": "Chevalier_config_lieri_limit",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LieRiLimitCallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_yongyao",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitYongYaoCallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_buxiu",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitBuXiuCallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier9",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier9CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier8",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier8CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier7",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier7CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier6",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier6CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier5",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier5CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier4",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier4CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier3",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier3CallBack"
+    },
+    {
+      "Id": "Chevalier_config_limit_Chevalier2",
+      "Type": "SWITCH",
+      "BoolVal": false,
+      "Callback": "ChevalierConfig:LimitChevalier2CallBack"
+    },
+    {
+      "Id": "Chevalier_config_use_performance_optimizations",
+      "Type": "SWITCH",
+      "BoolVal": true,
+      "Callback": "ChevalierConfig:UsePerformanceOptimizationsCallBack"
+    },
+    {
+    "Id": "Chevalier_config_optimize_comprehension_calculation",
+    "Type": "SWITCH",
+    "BoolVal": true,
+    "Callback": "ChevalierConfig:OptimizeComprehensionCalculationCallBack"
+  },
+  {
+    "Id": "Chevalier_config_show_realm_suffix",
+    "Type": "SWITCH",
+    "BoolVal": true,
+    "Callback": "ChevalierConfig:ShowRealmSuffixCallBack"
+  },
+  {
+    "Id": "Chevalier_config_show_title_prefix",
+    "Type": "SWITCH",
+    "BoolVal": false,
+    "Callback": "ChevalierConfig:ShowTitlePrefixCallBack"
+  }
+  ]
+}

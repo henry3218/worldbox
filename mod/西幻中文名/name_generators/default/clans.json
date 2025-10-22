@@ -1,0 +1,34 @@
+[
+    {
+        "id": "human_clan",
+        "templates": [
+            {
+                "format": "$founder_home$#-#$founder_family_name$#家族#"
+            }
+        ]
+    },
+    {
+        "id": "elf_clan",
+        "templates": [
+            {
+                "format": "$founder_home$#-#$founder_family_name$#精灵血脉#"
+            }
+        ]
+    },
+    {
+        "id": "orc_clan",
+        "templates": [
+            {
+                "format": "$founder_home$#-#$founder_family_name$#部族#"
+            }
+        ]
+    },
+    {
+        "id": "dwarf_clan",
+        "templates": [
+            {
+                "format": "$founder_home$#-#$founder_family_name$#氏族#"
+            }
+        ]
+    }
+]

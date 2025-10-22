@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "8+yVJGfVOeU=",
+  "success": true,
+  "projectFilePath": "E:\\Worldbox\\Mods\\ZhanXun\\InterestingTrait.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\qaz15\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\qaz15\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\qaz15\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

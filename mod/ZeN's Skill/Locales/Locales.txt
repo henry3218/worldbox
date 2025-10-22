@@ -1,0 +1,10 @@
+
+  //  "status_title_[ID]": "[顯示名稱]",
+  //  "status_description_[ID]": "[介紹內容]",
+
+
+  //  "trait_group_[群組ID]": "[群組名稱]",
+
+  //  "trait_特質ID": "顯示名稱",
+  //  "trait_特質ID_info": "特質介紹",
+  //  "trait_特質ID_info_2": "特質介紹(非必要)
