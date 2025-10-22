@@ -12,84 +12,99 @@
 
         public static void Init()
         {
-            BaseStatAsset Warrior = new BaseStatAsset();
-            Warrior.id = "Warrior";
-            Warrior.normalize = true;
-            Warrior.normalize_min = -9999999;
-            Warrior.normalize_max = 9999999;
-            //Warrior.multiplier = true;
-            Warrior.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(Warrior);
+            BaseStatAsset Warrior = EnsureBaseStat("Warrior", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = -9999999;
+                stat.normalize_max = 9999999;
+                //Warrior.multiplier = true;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义阵纹属性
-            Pattern = new BaseStatAsset();
-            Pattern.id = "Pattern";
-            Pattern.normalize = true;
-            Pattern.normalize_min = -9999999;
-            Pattern.normalize_max = 9999999;
-            Pattern.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(Pattern);
+            Pattern = EnsureBaseStat("Pattern", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = -9999999;
+                stat.normalize_max = 9999999;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义真罡属性，与武道气血使用相同的上下限
-            TrueGang = new BaseStatAsset();
-            TrueGang.id = "TrueGang";
-            TrueGang.normalize = true;
-            TrueGang.normalize_min = -9999999;
-            TrueGang.normalize_max = 9999999;
-            TrueGang.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(TrueGang);
+            TrueGang = EnsureBaseStat("TrueGang", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = -9999999;
+                stat.normalize_max = 9999999;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义真罡真伤倍数属性
-            TrueGangTrueDamageMultiplier = new BaseStatAsset();
-            TrueGangTrueDamageMultiplier.id = "TrueGangTrueDamageMultiplier";
-            TrueGangTrueDamageMultiplier.normalize = true;
-            TrueGangTrueDamageMultiplier.normalize_min = 0;
-            TrueGangTrueDamageMultiplier.normalize_max = 999999;
-            TrueGangTrueDamageMultiplier.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(TrueGangTrueDamageMultiplier);
+            TrueGangTrueDamageMultiplier = EnsureBaseStat("TrueGangTrueDamageMultiplier", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 999999;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义真罡回血倍数属性
-            TrueGangHealMultiplier = new BaseStatAsset();
-            TrueGangHealMultiplier.id = "TrueGangHealMultiplier";
-            TrueGangHealMultiplier.normalize = true;
-            TrueGangHealMultiplier.normalize_min = 0;
-            TrueGangHealMultiplier.normalize_max = 999999;
-            TrueGangHealMultiplier.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(TrueGangHealMultiplier);
+            TrueGangHealMultiplier = EnsureBaseStat("TrueGangHealMultiplier", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 999999;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义真罡伤害稀释倍数属性
-            TrueGangDamageReductionMultiplier = new BaseStatAsset();
-            TrueGangDamageReductionMultiplier.id = "TrueGangDamageReductionMultiplier";
-            TrueGangDamageReductionMultiplier.normalize = true;
-            TrueGangDamageReductionMultiplier.normalize_min = 0;
-            TrueGangDamageReductionMultiplier.normalize_max = 999999;
-            TrueGangDamageReductionMultiplier.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(TrueGangDamageReductionMultiplier);
+            TrueGangDamageReductionMultiplier = EnsureBaseStat("TrueGangDamageReductionMultiplier", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 999999;
+                stat.used_only_for_civs = false;
+            });
 
             // 定义 Resist 属性
-            Resist = new BaseStatAsset();
-            Resist.id = "Resist";
-            Resist.normalize = true;
-            Resist.normalize_min = 0;
-            Resist.normalize_max = 999999;
-            Resist.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(Resist);
+            Resist = EnsureBaseStat("Resist", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 999999;
+                stat.used_only_for_civs = false;
+            });
 
-            BaseStatAsset Dodge = new BaseStatAsset();
-            Dodge.id = "Dodge";// 闪避率
-            Dodge.normalize = true;
-            Dodge.normalize_min = 0;
-            Dodge.normalize_max = 99999;
-            Dodge.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(Dodge);
+            EnsureBaseStat("Dodge", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 99999;
+                stat.used_only_for_civs = false;
+            });
 
-            BaseStatAsset Accuracy = new BaseStatAsset();
-            Accuracy.id = "Accuracy";// 命中率
-            Accuracy.normalize = true;
-            Accuracy.normalize_min = 0;
-            Accuracy.normalize_max = 99999;
-            Accuracy.used_only_for_civs = false;
-            AssetManager.base_stats_library.add(Accuracy);
+            EnsureBaseStat("Accuracy", stat =>
+            {
+                stat.normalize = true;
+                stat.normalize_min = 0;
+                stat.normalize_max = 99999;
+                stat.used_only_for_civs = false;
+            });
+        }
+
+        private static BaseStatAsset EnsureBaseStat(string id, System.Action<BaseStatAsset> initializer)
+        {
+            BaseStatAsset existing = AssetManager.base_stats_library.get(id);
+            if (existing != null)
+            {
+                return existing;
+            }
+
+            BaseStatAsset stat = new BaseStatAsset();
+            stat.id = id;
+            initializer?.Invoke(stat);
+            AssetManager.base_stats_library.add(stat);
+            return stat;
         }
     }
 }
