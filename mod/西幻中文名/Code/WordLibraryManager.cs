@@ -1,68 +1,113 @@
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Chinese_Name.utils;
-using UnityEngine;
-
-namespace Chinese_Name;
-
-public class WordLibraryManager : AssetLibrary<WordLibraryAsset>
-{
-    internal static readonly WordLibraryManager Instance = new();
-    private static HashSet<string> submitted_dir = new HashSet<string>();
-    public override void init()
-    {
-        base.init();
-        id = "WordLibraryManager";
-        SubmitDirectoryToLoad(Path.Combine(ModClass.Instance.GetDeclaration().FolderPath, "word_libraries/default"));
-    }
-    internal void Reload()
-    {
-        HashSet<string> reload_dir = new HashSet<string>(submitted_dir);
-        submitted_dir.Clear();
-        foreach (var dir in reload_dir)
-        {
-            SubmitDirectoryToLoad(dir);
-        }
-    }
-    /// <summary>
-    /// ¥”÷∏∂®µƒ¥ ø‚÷–ÀÊª˙ªÒ»°“ª∏ˆ¥ 
-    /// </summary>
-    /// <param name="pId">÷∏∂®¥ ø‚µƒid, Œ™∂‘”¶Œƒº˛Œƒº˛√˚»•≥˝∫Û◊∫</param>
-    /// <returns>÷∏∂®¥ ø‚÷–ÀÊª˙“ª∏ˆ¥ , »Áπ˚¥ ø‚≤ª¥Ê‘⁄‘Ú∑µªÿø’¥Æ</returns>
-    public static string GetRandomWord(string pId)
-    {
-        if (Instance.dict.TryGetValue(pId, out WordLibraryAsset asset) && asset.words.Count > 0)
-        {
-            return Instance.dict[pId].GetRandom();
-        }
-        return "";
-    }
-    public static void SubmitDirectoryToLoad(string pDirectory)
-    {
-        if (submitted_dir.Contains(pDirectory)) return;
-        TextAsset[] text_assets = GeneralUtils.LoadAllFrom(pDirectory);
-        foreach (TextAsset text_asset in text_assets)
-        {
-            Instance.add(new WordLibraryAsset(text_asset.name, text_asset.text.Replace("\r", "").Split('\n').ToList()));
-        }
-        submitted_dir.Add(pDirectory);
-    }
-
-    public static void Submit(string pId, List<string> pWords)
-    {
-        Instance.add(new WordLibraryAsset(pId, pWords));
-    }
-
-    public static void SubmitForPatch(string pId, List<string> pWords)
-    {
-        if (Instance.dict.ContainsKey(pId))
-        {
-            Instance.dict[pId].words.AddRange(pWords);
-        }
-        else
-        {
-            Instance.add(new WordLibraryAsset(pId, pWords));
-        }
-    }
-}
+diff --git a/mod/Ë•øÂπª‰∏≠ÊñáÂêç/Code/WordLibraryManager.cs b/mod/Ë•øÂπª‰∏≠ÊñáÂêç/Code/WordLibraryManager.cs
+index fba866e3a12b88bb16ea25feea74f79fec4c516e..ccc45008fc39988fbc5ca6553acb8a12aec06075 100644
+--- a/mod/Ë•øÂπª‰∏≠ÊñáÂêç/Code/WordLibraryManager.cs
++++ b/mod/Ë•øÂπª‰∏≠ÊñáÂêç/Code/WordLibraryManager.cs
+@@ -4,65 +4,99 @@ using System.Linq;
+ using Chinese_Name.utils;
+ using UnityEngine;
+ 
+ namespace Chinese_Name;
+ 
+ public class WordLibraryManager : AssetLibrary<WordLibraryAsset>
+ {
+     internal static readonly WordLibraryManager Instance = new();
+     private static HashSet<string> submitted_dir = new HashSet<string>();
+     public override void init()
+     {
+         base.init();
+         id = "WordLibraryManager";
+         SubmitDirectoryToLoad(Path.Combine(ModClass.Instance.GetDeclaration().FolderPath, "word_libraries/default"));
+     }
+     internal void Reload()
+     {
+         HashSet<string> reload_dir = new HashSet<string>(submitted_dir);
+         submitted_dir.Clear();
+         foreach (var dir in reload_dir)
+         {
+             SubmitDirectoryToLoad(dir);
+         }
+     }
+     /// <summary>
+-    /// ÷∏ƒ¥ ø»°“ª
++    /// ÷∏ƒ¥ ø»°“ª
+     /// </summary>
+-    /// <param name="pId">÷∏ øid, Œ™”¶ƒºƒº»•◊∫</param>
+-    /// <returns>÷∏ ø“ª,  ø‚≤ªÚ∑µªÿø’¥</returns>
++    /// <param name="pId">÷∏ øid, Œ™”¶ƒºƒº»•◊∫</param>
++    /// <returns>÷∏ ø“ª,  ø‚≤ªÚ∑µªÿø’¥</returns>
+     public static string GetRandomWord(string pId)
+     {
+         if (Instance.dict.TryGetValue(pId, out WordLibraryAsset asset) && asset.words.Count > 0)
+         {
+             return Instance.dict[pId].GetRandom();
+         }
+         return "";
+     }
+     public static void SubmitDirectoryToLoad(string pDirectory)
+     {
+         if (submitted_dir.Contains(pDirectory)) return;
+         TextAsset[] text_assets = GeneralUtils.LoadAllFrom(pDirectory);
+         foreach (TextAsset text_asset in text_assets)
+         {
+-            Instance.add(new WordLibraryAsset(text_asset.name, text_asset.text.Replace("\r", "").Split('\n').ToList()));
++            var words = NormalizeWords(text_asset.text.Replace("\r", "").Split('\n'));
++            AddOrReplace(text_asset.name, words);
+         }
+         submitted_dir.Add(pDirectory);
+     }
+ 
+     public static void Submit(string pId, List<string> pWords)
+     {
++        AddOrReplace(pId, NormalizeWords(pWords));
++    }
++
++    private static void AddOrReplace(string pId, List<string> pWords)
++    {
++        if (Instance.dict.TryGetValue(pId, out var existingAsset))
++        {
++            existingAsset.words.Clear();
++            existingAsset.words.AddRange(pWords);
++            return;
++        }
++
+         Instance.add(new WordLibraryAsset(pId, pWords));
+     }
+ 
+     public static void SubmitForPatch(string pId, List<string> pWords)
+     {
+-        if (Instance.dict.ContainsKey(pId))
++        var sanitizedWords = NormalizeWords(pWords);
++        if (Instance.dict.TryGetValue(pId, out var existingAsset))
+         {
+-            Instance.dict[pId].words.AddRange(pWords);
++            foreach (var word in sanitizedWords)
++            {
++                if (!existingAsset.words.Contains(word))
++                {
++                    existingAsset.words.Add(word);
++                }
++            }
+         }
+         else
+         {
+-            Instance.add(new WordLibraryAsset(pId, pWords));
++            Instance.add(new WordLibraryAsset(pId, sanitizedWords));
+         }
+     }
+-}
+\ No newline at end of file
++
++    private static List<string> NormalizeWords(IEnumerable<string> pWords)
++    {
++        if (pWords == null)
++        {
++            return new List<string>();
++        }
++
++        return pWords
++            .Select(word => word?.Trim())
++            .Where(word => !string.IsNullOrEmpty(word))
++            .Distinct()
++            .ToList();
++    }
++}
