@@ -44,14 +44,16 @@ namespace ZeN_01
 
 		//情緒狀態
 			var tantrum = AssetManager.status.get("tantrum"); //忿怒
-			tantrum.opposite_status = new string[] { "calm", "serenity", "apostle_se2", "brave", "darkblessing" };
+			//tantrum.tier = StatusTier.Advanced;//Advanced None Basic
+			tantrum.opposite_status = new string[] { "calm", "serenity", "apostle_se2", "brave" };
 			tantrum.opposite_traits = AssetLibrary<StatusAsset>.a<string>(new string[]
 			{
 				 "apostle"
 			});
 
 			var angry = AssetManager.status.get("angry"); // 忿怒
-			angry.opposite_status = new string[] { "calm", "serenity", "slave", "apostle_se2", "brave", "darkblessing" };
+			//angry.tier = StatusTier.Advanced;//Advanced None Basic
+			angry.opposite_status = new string[] { "calm", "serenity", "apostle_se2", "brave" };
 			angry.opposite_traits = AssetLibrary<StatusAsset>.a<string>(new string[]
 			{
 				 "apostle"

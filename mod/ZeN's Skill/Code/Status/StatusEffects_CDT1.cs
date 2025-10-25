@@ -31,7 +31,7 @@ namespace ZeN_01
 			cdt_clear00.path_icon = "ui/icons/CDT/cdt_clear00";			 //效果圖標
 			cdt_clear00.locale_id = $"status_title_{cdt_clear00.id}";	  //區域設定ID					非必要
 			cdt_clear00.locale_description = $"status_description_{cdt_clear00.id}";		//區域設定描述非必要			非必要
-			cdt_clear00.tier = StatusTier.Basic;
+			cdt_clear00.tier = StatusTier.None;
 			// ======================================================================================================
 			// 修正點：將所有要移除的狀態一次性放入一個字串陣列
 			cdt_clear00.remove_status = new string[] 
@@ -55,7 +55,7 @@ namespace ZeN_01
 			cdt_debuff00.path_icon = "ui/icons/CDT/cdt_debuff";				//效果圖標
 			cdt_debuff00.locale_id = $"status_title_{cdt_debuff00.id}";		//區域設定ID					非必要
 			cdt_debuff00.locale_description = $"status_description_{cdt_debuff00.id}";		//區域設定描述非必要			非必要
-			cdt_debuff00.tier = StatusTier.Basic;
+			cdt_debuff00.tier = StatusTier.None;
 			cdt_debuff00.opposite_status = new string[] { "cdt_clear00" }; // 移除空字串 ""
 			cdt_debuff00.remove_status = new string[] 
 			{ 
@@ -75,7 +75,7 @@ namespace ZeN_01
 			cdt_debuff01.path_icon = "ui/icons/CDT/cdt_debuff";				//效果圖標
 			cdt_debuff01.locale_id = $"status_title_{cdt_debuff01.id}";		//區域設定ID					非必要
 			cdt_debuff01.locale_description = $"status_description_{cdt_debuff01.id}";		//區域設定描述非必要			非必要
-			cdt_debuff01.tier = StatusTier.Basic;
+			cdt_debuff01.tier = StatusTier.None;
 			cdt_debuff01.opposite_status = new string[] { "cdt_clear00" }; // 移除空字串 ""
 			cdt_debuff01.remove_status = new string[] 
 			{ 
@@ -91,7 +91,7 @@ namespace ZeN_01
 			cdt_debuff02.path_icon = "ui/icons/CDT/cdt_debuff";				//效果圖標
 			cdt_debuff02.locale_id = $"status_title_{cdt_debuff02.id}";		//區域設定ID					非必要
 			cdt_debuff02.locale_description = $"status_description_{cdt_debuff02.id}";		//區域設定描述非必要			非必要
-			cdt_debuff02.tier = StatusTier.Basic;
+			cdt_debuff02.tier = StatusTier.None;
 			cdt_debuff02.opposite_status = new string[] { "cdt_clear00" }; // 移除空字串 ""
 			cdt_debuff02.remove_status = new string[] 
 			{ 
@@ -107,7 +107,7 @@ namespace ZeN_01
 			cdt_debuff03.path_icon = "ui/icons/CDT/cdt_debuff";				//效果圖標
 			cdt_debuff03.locale_id = $"status_title_{cdt_debuff03.id}";		//區域設定ID					非必要
 			cdt_debuff03.locale_description = $"status_description_{cdt_debuff03.id}";		//區域設定描述非必要			非必要
-			cdt_debuff03.tier = StatusTier.Basic;
+			cdt_debuff03.tier = StatusTier.None;
 			cdt_debuff03.opposite_status = new string[] { "cdt_clear00" }; // 移除空字串 ""
 			cdt_debuff03.remove_status = new string[] 
 			{ 
@@ -124,7 +124,7 @@ namespace ZeN_01
 			cdt_debuff04.path_icon = "ui/icons/CDT/cdt_debuff";				//效果圖標
 			cdt_debuff04.locale_id = $"status_title_{cdt_debuff04.id}";		//區域設定ID					非必要
 			cdt_debuff04.locale_description = $"status_description_{cdt_debuff04.id}";		//區域設定描述非必要			非必要
-			cdt_debuff04.tier = StatusTier.Basic;
+			cdt_debuff04.tier = StatusTier.None;
 			cdt_debuff04.opposite_status = new string[] { "cdt_clear00" }; // 移除空字串 ""
 			cdt_debuff04.remove_status = new string[] 
 			{ 
@@ -142,7 +142,7 @@ namespace ZeN_01
 			cdt_atk00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk00.locale_id = $"status_title_{cdt_atk00.id}";		//區域設定ID					非必要
 			cdt_atk00.locale_description = $"status_description_{cdt_atk00.id}";		//區域設定描述非必要			非必要
-			cdt_atk00.tier = StatusTier.Basic;
+			cdt_atk00.tier = StatusTier.None;
 			cdt_atk00.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk00.id, "攻擊冷卻", "冷卻倒數,距離再次使用附加魔法還要…");
 			addToLocalizedLibrary("en",cdt_atk00.id, "Atk CD", "Cooling down, how long will it take to use addmagic again...");
@@ -154,7 +154,7 @@ namespace ZeN_01
 			cdt_atk01.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk01.locale_id = $"status_title_{cdt_atk01.id}";		//區域設定ID					非必要
 			cdt_atk01.locale_description = $"status_description_{cdt_atk01.id}";		//區域設定描述非必要			非必要
-			cdt_atk01.tier = StatusTier.Basic;
+			cdt_atk01.tier = StatusTier.None;
 			cdt_atk01.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk01.id, "戰技冷卻", "冷卻倒數,距離再次發動戰技還要…");
 			addToLocalizedLibrary("en",cdt_atk01.id, "Atk CD", "Cooling down, how long will it take to use addmagic again...");
@@ -166,7 +166,7 @@ namespace ZeN_01
 			cdt_atk02.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk02.locale_id = $"status_title_{cdt_atk02.id}";		//區域設定ID					非必要
 			cdt_atk02.locale_description = $"status_description_{cdt_atk02.id}";		//區域設定描述非必要			非必要
-			cdt_atk02.tier = StatusTier.Basic;
+			cdt_atk02.tier = StatusTier.None;
 			cdt_atk02.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk02.id, "戰技冷卻", "冷卻倒數,距離再次發動戰技還要…");
 			addToLocalizedLibrary("en",cdt_atk02.id, "Atk CD", "Cooling down, how long will it take to use addmagic again...");
@@ -178,7 +178,7 @@ namespace ZeN_01
 			cdt_atk03.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk03.locale_id = $"status_title_{cdt_atk03.id}";		//區域設定ID					非必要
 			cdt_atk03.locale_description = $"status_description_{cdt_atk03.id}";		//區域設定描述非必要			非必要
-			cdt_atk03.tier = StatusTier.Basic;
+			cdt_atk03.tier = StatusTier.None;
 			cdt_atk03.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk03.id, "戰技冷卻", "冷卻倒數,距離再次發動戰技還要…");
 			addToLocalizedLibrary("en",cdt_atk03.id, "Atk CD", "Cooling down, how long will it take to use addmagic again...");
@@ -190,7 +190,7 @@ namespace ZeN_01
 			cdt_atk04.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk04.locale_id = $"status_title_{cdt_atk04.id}";		//區域設定ID					非必要
 			cdt_atk04.locale_description = $"status_description_{cdt_atk04.id}";		//區域設定描述非必要			非必要
-			cdt_atk04.tier = StatusTier.Basic;
+			cdt_atk04.tier = StatusTier.None;
 			cdt_atk04.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk04.id, "射程冷卻", "冷卻倒數,距離再次擴張視野還要…");
 			addToLocalizedLibrary("en",cdt_atk04.id, "Range Cooling", "Cooling down, It's still a long way to expand your horizon again...");
@@ -202,7 +202,7 @@ namespace ZeN_01
 			cdt_atk05.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_atk05.locale_id = $"status_title_{cdt_atk05.id}";		//區域設定ID					非必要
 			cdt_atk05.locale_description = $"status_description_{cdt_atk05.id}";		//區域設定描述非必要			非必要
-			cdt_atk05.tier = StatusTier.Basic;
+			cdt_atk05.tier = StatusTier.None;
 			cdt_atk05.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_atk05.id, "射擊冷卻", "冷卻倒數,距離再次射擊子彈還要…");
 			addToLocalizedLibrary("en",cdt_atk05.id, "Atk CD", "Cooling down, It's still a while before we can fire the bullet again...");
@@ -214,7 +214,7 @@ namespace ZeN_01
 			cdt_call00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_call00.locale_id = $"status_title_{cdt_call00.id}";		//區域設定ID					非必要
 			cdt_call00.locale_description = $"status_description_{cdt_call00.id}";		//區域設定描述非必要			非必要
-			cdt_call00.tier = StatusTier.Basic;
+			cdt_call00.tier = StatusTier.None;
 			//cdt_call00.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_call00.id, "呼喚冷卻", "冷卻倒數,距離下次呼喚它們還需要…");
 			addToLocalizedLibrary("en",cdt_call00.id, "Call CD", "Cooling down, It will take a while before we call them again....");
@@ -226,7 +226,7 @@ namespace ZeN_01
 			cdt_call01.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_call01.locale_id = $"status_title_{cdt_call01.id}";		//區域設定ID					非必要
 			cdt_call01.locale_description = $"status_description_{cdt_call01.id}";		//區域設定描述非必要			非必要
-			cdt_call01.tier = StatusTier.Basic;
+			cdt_call01.tier = StatusTier.None;
 			//cdt_call01.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",cdt_call01.id, "呼喚冷卻", "冷卻倒數,距離下次呼喚它們還需要…");
 			addToLocalizedLibrary("en",cdt_call01.id, "Call CD", "Cooling down, It will take a while before we call them again....");
@@ -238,7 +238,7 @@ namespace ZeN_01
 			Rebirth.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			Rebirth.locale_id = $"status_title_{Rebirth.id}";		//區域設定ID					非必要
 			Rebirth.locale_description = $"status_description_{Rebirth.id}";		//區域設定描述非必要			非必要
-			Rebirth.tier = StatusTier.Basic;
+			Rebirth.tier = StatusTier.None;
 			//Rebirth.opposite_status = new string[] { "cdt_clear00", "cdt_debuff01" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",Rebirth.id, "重生", "");
 			addToLocalizedLibrary("en",Rebirth.id, "Rebirth", "");
@@ -253,7 +253,7 @@ namespace ZeN_01
 			cdt_buff00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_buff00.locale_id = $"status_title_{cdt_buff00.id}";		//區域設定ID					非必要
 			cdt_buff00.locale_description = $"status_description_{cdt_buff00.id}";		//區域設定描述非必要			非必要
-			cdt_buff00.tier = StatusTier.Basic;
+			cdt_buff00.tier = StatusTier.None;
 			// 修正點：opposite_status 的設置也要確保包含所有對立狀態
 			cdt_buff00.opposite_status = new string[] { "cdt_clear00", "cdt_debuff02" };
 			addToLocalizedLibrary("ch",cdt_buff00.id, "強化冷卻", "冷卻倒數,距離下次執行還要…");
@@ -268,7 +268,7 @@ namespace ZeN_01
 			cdt_give00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_give00.locale_id = $"status_title_{cdt_give00.id}";		//區域設定ID					非必要
 			cdt_give00.locale_description = $"status_description_{cdt_give00.id}";		//區域設定描述非必要			非必要
-			cdt_give00.tier = StatusTier.Basic;
+			cdt_give00.tier = StatusTier.None;
 			cdt_give00.opposite_status = new string[] { "cdt_clear00", "cdt_debuff02" };				//對立
 			addToLocalizedLibrary("ch",cdt_give00.id, "贈與冷卻", "再次得到效果還需要…");
 			addToLocalizedLibrary("en",cdt_give00.id, "Give CD", "To get the effect again, you need...");
@@ -282,7 +282,7 @@ namespace ZeN_01
 			cdt_cure00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_cure00.locale_id = $"status_title_{cdt_cure00.id}";		//區域設定ID					非必要
 			cdt_cure00.locale_description = $"status_description_{cdt_cure00.id}";		//區域設定描述非必要			非必要
-			cdt_cure00.tier = StatusTier.Basic;
+			cdt_cure00.tier = StatusTier.None;
 			cdt_cure00.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };				//對立
 			addToLocalizedLibrary("ch",cdt_cure00.id, "發動冷卻", "冷卻倒數,距離再次使用還要…");
 			addToLocalizedLibrary("en",cdt_cure00.id, "Start Cooling", "Cooling down, it will take a while before it can be used again...");
@@ -294,7 +294,7 @@ namespace ZeN_01
 			cdt_cure01.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_cure01.locale_id = $"status_title_{cdt_cure01.id}";		//區域設定ID					非必要
 			cdt_cure01.locale_description = $"status_description_{cdt_cure01.id}";		//區域設定描述非必要			非必要
-			cdt_cure01.tier = StatusTier.Basic;
+			cdt_cure01.tier = StatusTier.None;
 			cdt_cure01.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };				//對立
 			addToLocalizedLibrary("ch",cdt_cure01.id, "治療冷卻", "冷卻倒數,距離再次發動治療還要…");
 			addToLocalizedLibrary("en",cdt_cure01.id, "Treatment CD", "Cooling down, it will take a while before the next treatment starts...");
@@ -306,7 +306,7 @@ namespace ZeN_01
 			cdt_cure02.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_cure02.locale_id = $"status_title_{cdt_cure02.id}";		//區域設定ID					非必要
 			cdt_cure02.locale_description = $"status_description_{cdt_cure02.id}";		//區域設定描述非必要			非必要
-			cdt_cure02.tier = StatusTier.Basic;
+			cdt_cure02.tier = StatusTier.None;
 			cdt_cure02.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };				//對立
 			addToLocalizedLibrary("ch",cdt_cure02.id, "法術冷卻", "冷卻倒數,距離再次發動治癒魔法還要…");
 			addToLocalizedLibrary("en",cdt_cure02.id, "Treatment CD", "Cooling down, it will take a while before the next treatment starts...");
@@ -318,11 +318,23 @@ namespace ZeN_01
 			cdt_cure03.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			cdt_cure03.locale_id = $"status_title_{cdt_cure03.id}";		//區域設定ID					非必要
 			cdt_cure03.locale_description = $"status_description_{cdt_cure03.id}";		//區域設定描述非必要			非必要
-			cdt_cure03.tier = StatusTier.Basic;
+			cdt_cure03.tier = StatusTier.None;
 			cdt_cure03.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };				//對立
 			addToLocalizedLibrary("ch",cdt_cure03.id, "法術冷卻 ", "冷卻倒數,距離再次發動治癒魔法還要… ");
 			addToLocalizedLibrary("en",cdt_cure03.id, "Treatment CD ", "Cooling down, it will take a while before the next treatment starts... ");
 			AssetManager.status.add(cdt_cure03);
+
+			var cdt_cure04 = new StatusAsset();
+			cdt_cure04.id = "cdt_cure04";								 //ID
+			cdt_cure04.duration = 60f;									 //倒數計時
+			cdt_cure04.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
+			cdt_cure04.locale_id = $"status_title_{cdt_cure04.id}";		//區域設定ID					非必要
+			cdt_cure04.locale_description = $"status_description_{cdt_cure04.id}";		//區域設定描述非必要			非必要
+			cdt_cure04.tier = StatusTier.None;
+			cdt_cure04.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };				//對立
+			addToLocalizedLibrary("ch",cdt_cure04.id, "法術冷卻 ", "冷卻倒數,距離再次發動聖光魔法還要… ");
+			addToLocalizedLibrary("en",cdt_cure04.id, "Treatment CD ", "Cooling down, it will take a while before the next treatment starts... ");
+			AssetManager.status.add(cdt_cure04);
 			# endregion
 			# region 降雨CDT
 		//降雨
@@ -332,7 +344,7 @@ namespace ZeN_01
 			cdt_rain01.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_rain01.locale_id = $"status_title_{cdt_rain01.id}";	  //區域設定ID					非必要
 			cdt_rain01.locale_description = $"status_description_{cdt_rain01.id}";		//區域設定描述非必要			非必要
-			cdt_rain01.tier = StatusTier.Basic;
+			cdt_rain01.tier = StatusTier.None;
 			cdt_rain01.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };
 			addToLocalizedLibrary("ch",cdt_rain01.id, "灑水之後", "剛剛澆熄了被點燃的同胞");
 			addToLocalizedLibrary("en",cdt_rain01.id, "After watering", "Just extinguished the burning compatriots.");
@@ -344,7 +356,7 @@ namespace ZeN_01
 			cdt_rain02.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_rain02.locale_id = $"status_title_{cdt_rain02.id}";	  //區域設定ID					非必要
 			cdt_rain02.locale_description = $"status_description_{cdt_rain02.id}";		//區域設定描述非必要			非必要
-			cdt_rain02.tier = StatusTier.Basic;
+			cdt_rain02.tier = StatusTier.None;
 			cdt_rain02.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };
 			addToLocalizedLibrary("ch",cdt_rain02.id, "灑水之後", "為了耕耘而降下雨水");
 			addToLocalizedLibrary("en",cdt_rain02.id, "After watering", "Rain for farming.");
@@ -356,7 +368,7 @@ namespace ZeN_01
 			cdt_rain03.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_rain03.locale_id = $"status_title_{cdt_rain03.id}";	  //區域設定ID					非必要
 			cdt_rain03.locale_description = $"status_description_{cdt_rain03.id}";		//區域設定描述非必要			非必要
-			cdt_rain03.tier = StatusTier.Basic;
+			cdt_rain03.tier = StatusTier.None;
 			cdt_rain03.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };
 			addToLocalizedLibrary("ch",cdt_rain03.id, "灑水之後", "為了救火而降下雨水");
 			addToLocalizedLibrary("en",cdt_rain03.id, "After watering", "Rain falls to put out fires.");
@@ -368,7 +380,7 @@ namespace ZeN_01
 			cdt_rain04.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_rain04.locale_id = $"status_title_{cdt_rain04.id}";	  //區域設定ID					非必要
 			cdt_rain04.locale_description = $"status_description_{cdt_rain04.id}";		//區域設定描述非必要			非必要
-			cdt_rain04.tier = StatusTier.Basic;
+			cdt_rain04.tier = StatusTier.None;
 			cdt_rain04.opposite_status = new string[] { "cdt_clear00", "cdt_debuff03" };
 			addToLocalizedLibrary("ch",cdt_rain04.id, "灑水之後", "為了護身而降下雨水");
 			addToLocalizedLibrary("en",cdt_rain04.id, "After watering", "Rain falls for protection.");
@@ -382,7 +394,7 @@ namespace ZeN_01
 			cdt_nest01.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_nest01.locale_id = $"status_title_{cdt_nest01.id}";	  //區域設定ID					非必要
 			cdt_nest01.locale_description = $"status_description_{cdt_nest01.id}";		//區域設定描述非必要			非必要
-			cdt_nest01.tier = StatusTier.Basic;
+			cdt_nest01.tier = StatusTier.None;
 			cdt_nest01.opposite_status = new string[] { "cdt_clear00", "cdt_debuff04" }; // 移除空字串 ""
 			addToLocalizedLibrary("ch",cdt_nest01.id, "築巢之後", "要過一段時間才能再建立新巢穴");
 			addToLocalizedLibrary("en",cdt_nest01.id, "After nesting", "It will take some time before a new nest can be established.");
@@ -394,7 +406,7 @@ namespace ZeN_01
 			cdt_drop.path_icon = "ui/icons/CDT/CDT000";			 //效果圖標
 			cdt_drop.locale_id = $"status_title_{cdt_drop.id}";	  //區域設定ID					非必要
 			cdt_drop.locale_description = $"status_description_{cdt_drop.id}";		//區域設定描述非必要			非必要
-			cdt_drop.tier = StatusTier.Basic;
+			cdt_drop.tier = StatusTier.None;
 			cdt_drop.opposite_status = new string[] { "cdt_clear00", "cdt_debuff04" }; // 移除空字串 ""
 			addToLocalizedLibrary("ch",cdt_drop.id, "遠距建立", "剛剛在遠端建立了一些東西");
 			addToLocalizedLibrary("en",cdt_drop.id, "Remote Construction", "Just built something remotely.");
@@ -438,7 +450,7 @@ namespace ZeN_01
 			item_cdt00.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt00.locale_id = $"status_title_{item_cdt00.id}";		//區域設定ID					非必要
 			item_cdt00.locale_description = $"status_description_{item_cdt00.id}";		//區域設定描述非必要			非必要
-			item_cdt00.tier = StatusTier.Basic;
+			item_cdt00.tier = StatusTier.None;
 			item_cdt00.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt00.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt00.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");
@@ -450,7 +462,7 @@ namespace ZeN_01
 			item_cdt01.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt01.locale_id = $"status_title_{item_cdt01.id}";		//區域設定ID					非必要
 			item_cdt01.locale_description = $"status_description_{item_cdt01.id}";		//區域設定描述非必要			非必要
-			item_cdt01.tier = StatusTier.Basic;
+			item_cdt01.tier = StatusTier.None;
 			item_cdt01.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt01.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt01.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");
@@ -462,7 +474,7 @@ namespace ZeN_01
 			item_cdt02.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt02.locale_id = $"status_title_{item_cdt02.id}";		//區域設定ID					非必要
 			item_cdt02.locale_description = $"status_description_{item_cdt02.id}";		//區域設定描述非必要			非必要
-			item_cdt02.tier = StatusTier.Basic;
+			item_cdt02.tier = StatusTier.None;
 			item_cdt02.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt02.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt02.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");
@@ -474,7 +486,7 @@ namespace ZeN_01
 			item_cdt03.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt03.locale_id = $"status_title_{item_cdt03.id}";		//區域設定ID					非必要
 			item_cdt03.locale_description = $"status_description_{item_cdt03.id}";		//區域設定描述非必要			非必要
-			item_cdt03.tier = StatusTier.Basic;
+			item_cdt03.tier = StatusTier.None;
 			item_cdt03.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt03.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt03.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");
@@ -486,7 +498,7 @@ namespace ZeN_01
 			item_cdt04.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt04.locale_id = $"status_title_{item_cdt04.id}";		//區域設定ID					非必要
 			item_cdt04.locale_description = $"status_description_{item_cdt04.id}";		//區域設定描述非必要			非必要
-			item_cdt04.tier = StatusTier.Basic;
+			item_cdt04.tier = StatusTier.None;
 			item_cdt04.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt04.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt04.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");
@@ -498,7 +510,7 @@ namespace ZeN_01
 			item_cdt05.path_icon = "ui/icons/CDT/CDT000";				//效果圖標
 			item_cdt05.locale_id = $"status_title_{item_cdt05.id}";		//區域設定ID					非必要
 			item_cdt05.locale_description = $"status_description_{item_cdt05.id}";		//區域設定描述非必要			非必要
-			item_cdt05.tier = StatusTier.Basic;
+			item_cdt05.tier = StatusTier.None;
 			item_cdt05.opposite_status = new string[] { "", "" };								//移除,對下位狀態
 			addToLocalizedLibrary("ch",item_cdt05.id, "武器冷卻", "冷卻倒數,距離再次驅動武裝還要…");
 			addToLocalizedLibrary("en",item_cdt05.id, "Item CD", "Cooling down, it takes more time to activate the weapon again...");

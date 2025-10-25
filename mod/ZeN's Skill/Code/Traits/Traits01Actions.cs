@@ -152,11 +152,11 @@ namespace ZeN_01
 				return false;
 			}
 			// 1. 基礎檢查：確保單位持有 "pro_king" 特質才執行後續國王邏輯
-			if (!actor.hasTrait("pro_king"))
-			{
-				// Debug.LogWarning($"KingEffect: Actor {actor.getName()} does not have 'pro_king' trait. Skipping.");
-				return false;
-			}
+			//if (!actor.hasTrait("pro_king"))
+			//{
+			//	// Debug.LogWarning($"KingEffect: Actor {actor.getName()} does not have 'pro_king' trait. Skipping.");
+			//	return false;
+			//}
 			// 2. 王國和國王空缺檢查：確保單位屬於一個王國，並且國王職位空缺 (無國王或國王已死亡)
 			if (kingdom == null)
 			{
@@ -201,11 +201,11 @@ namespace ZeN_01
 			if (pTarget == null || pTarget.a == null)
 				return false;
 			Actor actor = pTarget.a;
-			if (!actor.hasTrait("pro_king"))
-			{
-				// //Debug.LogWarning($"KingEffect called on actor {actor.getName()} without pro_king trait. Skipping.");
-				return false; 
-			}
+			//if (!actor.hasTrait("pro_king"))
+			//{
+			//	// //Debug.LogWarning($"KingEffect called on actor {actor.getName()} without pro_king trait. Skipping.");
+			//	return false; 
+			//}
 			// 检查：只有当是国王时才继续添加效果
 			if (actor.getProfession() != UnitProfession.King) // 使用 getProfession()
 			{
@@ -258,11 +258,11 @@ namespace ZeN_01
 			if (pTarget == null || pTarget.a == null)
 				return false;
 			Actor actor = pTarget.a;
-			if (!actor.hasTrait("pro_king"))
-			{
-				//Debug.LogWarning($"KingEffect called on actor {actor.getName()} without pro_king trait. Skipping.");
-				return false; 
-			}
+			//if (!actor.hasTrait("pro_king"))
+			//{
+			//	//Debug.LogWarning($"KingEffect called on actor {actor.getName()} without pro_king trait. Skipping.");
+			//	return false; 
+			//}
 			// 检查：只有当是国王时才继续添加效果
 			if (actor.getProfession() != UnitProfession.King) // 使用 getProfession()
 			{
@@ -401,11 +401,11 @@ namespace ZeN_01
 			Actor actor = pTarget.a; // 確保 pTarget.a 是 Actor 類型
 
 			// 1. 檢查是否持有 "pro_leader" 特質
-			if (!actor.hasTrait("pro_leader"))
-			{
-				// 如果沒有 pro_leader 特質，則此效果不應繼續
-				return false; 
-			}
+			//if (!actor.hasTrait("pro_leader"))
+			//{
+			//	// 如果沒有 pro_leader 特質，則此效果不應繼續
+			//	return false; 
+			//}
 
 			// 2. **關鍵新增：如果單位已經是國王，則不再將其設為領主**
 			//	這將阻止已晉升為國王的單位被拉回領主身份
@@ -441,11 +441,11 @@ namespace ZeN_01
 			Actor actor = pTarget.a;
 
 			// 檢查：如果沒有 "pro_leader" 特質，則停止
-			if (!actor.hasTrait("pro_leader")) // 注意：這裡的特質 ID 有空格
-			{
-				// Debug.LogWarning($"LeaderEffect called on actor {actor.getName()} without Pro Leader trait. Skipping.");
-				return false; 
-			}
+			//if (!actor.hasTrait("pro_leader")) // 注意：這裡的特質 ID 有空格
+			//{
+			//	// Debug.LogWarning($"LeaderEffect called on actor {actor.getName()} without Pro Leader trait. Skipping.");
+			//	return false; 
+			//}
 
 			// 檢查：只有當是領主时才繼續添加效果
 			if (actor.getProfession() != UnitProfession.Leader) // 使用 getProfession()
@@ -510,10 +510,10 @@ namespace ZeN_01
 			Actor actor = pTarget.a;
 
 			// 檢查：如果沒有 "pro_leader" 特質，則停止
-			if (!actor.hasTrait("pro_leader"))
-			{
-				return false;
-			}
+			//if (!actor.hasTrait("pro_leader"))
+			//{
+			//	return false;
+			//}
 
 			// 檢查：只有當是領主时才繼續添加效果
 			if (actor.getProfession() != UnitProfession.Leader)
@@ -710,31 +710,47 @@ namespace ZeN_01
 	//隊長 Captain 
 		public static bool GroupLeaderEffect(BaseSimObject pTarget, WorldTile pTile = null)
 		{// 軍隊長 Captain 就職
-			// 1. 基本安全检查：确保目标存在、是活着的Actor
+			// 1. 基本安全檢查：確保目標存在、是活著的Actor
 			if (pTarget == null || pTarget.a == null || !pTarget.a.isAlive())
 				return false;
 			Actor actor = pTarget.a;
-			if (actor.isKing() || actor.getProfession() == UnitProfession.Leader) // WorldBox 內建方法，判斷是否為國王
+			//Army cityArmy = city.army;
+			// 排除國王或已是 Leader 職業的單位
+			if (actor.isKing() || actor.isCityLeader() ||actor.is_army_captain) 
 			{
-				return false; // 單位已是國王，此效果不再需要將其轉職
+				return false; 
 			}
-			// 2. 确保指挥官是战士职业
-			if (!actor.isProfession(UnitProfession.Warrior))
+			if(!actor.isKing() || !actor.isCityLeader())
 			{
-				actor.setProfession(UnitProfession.Warrior); // 设置为战士
-				// 尝试设置其为军队队长 (如果它不是且属于一个军队)
-				if (!actor.is_army_captain && actor.army != null)
+				if (!actor.isWarrior())
 				{
-					actor.army.setCaptain(actor);
+					actor.setProfession(UnitProfession.Warrior); // 設置為戰士
 				}
 			}
-			// 設定角色的 AI 工作為 "attacker"
+			// ====== 導入 ArmyCreationAction 核心邏輯：強制創建新軍隊並成為隊長 ======
+			City targetCity = actor.city;
+			// A. 如果單位目前在軍隊中，先從舊軍隊的清單中移除（必須先做這一步）
+			if (actor.hasArmy()) 
+			{
+				// 安全移除：將單位從其舊軍隊的單位清單中移除
+				actor.army.units.Remove(actor); 
+			}
+			// B. 創建新軍隊並將其設置為該單位的新軍隊。
+			// newArmy() 函式會自動將傳入的 actor 設為新軍隊的隊長。
+			Army newArmy = World.world.armies.newArmy(actor, targetCity);
+			actor.setArmy(newArmy);
+			targetCity.army.setCaptain(actor, true);
+			actor.startShake();
+			actor.startColorEffect();
+			// ====================================================================
+			// 設定角色的 AI 工作為 "attacker" (保持不變)
+			// 注意：這裡假設 Reflection 類和 GetField 方法在您的 Mod 環境中是可用的。
 			var pAI = (AiSystemActor)Reflection.GetField(typeof(Actor), actor, "ai");
 			if (pAI != null) // 確保 AI 系統存在
 			{
 				pAI.setJob("attacker");
 			}
-			return true; // 效果成功执行
+			return true; // 效果成功執行
 		}
 		public static bool GroupLeaderEffect2(BaseSimObject pTarget, WorldTile pTile = null)
 		{// 軍隊長 Captain 招募
@@ -772,12 +788,11 @@ namespace ZeN_01
 			if (pTarget != null && pTarget.a != null)
 			{
 				Actor actor = pTarget.a;
-				if (actor.isKing() || actor.getProfession() == UnitProfession.Leader) // WorldBox 內建方法，判斷是否為國王
+				if (actor.isKing() || actor.isCityLeader()) // WorldBox 內建方法，判斷是否為國王
 				{
 					return false; // 單位已是國王，此效果不再需要將其轉職
 				}
-				// 确保目标对象拥有 Warrior 职业
-				if (!actor.isProfession(UnitProfession.Warrior))
+				if (!actor.isWarrior())
 				{
 					actor.setProfession(UnitProfession.Warrior);
 				}
@@ -832,45 +847,51 @@ namespace ZeN_01
 		}
 		private static readonly HashSet<string> rangedWeaponIDs = new HashSet<string>
 		{// 遠程武器清單
-			"white_staff",		//1>9
-			"druid_staff",		// >9
-			"necromancer_staff",// >6
-			"evil_staff",		// >5
-			"bow_wood",			//5>22
-			"bow_copper",		//6
-			"bow_bronze",		//7
-			"bow_silver",		//8
-			"bow_iron",			//9
-			"bow_steel",		//8
-			"bow_mythril",		//11
-			"bow_adamantine",	//12
-			"alien_blaster",	//13
-			"shotgun"			//14
+			"white_staff",
+			"druid_staff",
+			"necromancer_staff",
+			"evil_staff",
+			"bow_wood",	
+			"bow_copper",
+			"bow_bronze",
+			"bow_silver",
+			"bow_iron",	
+			"bow_steel",
+			"bow_mythril",
+			"bow_adamantine",
+			"alien_blaster",
+			"shotgun"
 		};
 		public static bool Skill0002_Effect(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile = null)
 		{// 猛擊 (攻擊時檢查自身 cdt_atk 或 cdt_debuff01 並施加給自身，排除遠程武器)
-			if (pSelf == null || pSelf.a == null) 
+			if (pSelf == null || pSelf.a == null)	
 			{
 				return false; // 自身 Actor 無效
 			}
 			Actor selfActor = pSelf.a;
 			// === 新增：檢查單位是否持有遠程武器 ===
-			var weaponSlot = selfActor.equipment.getSlot(EquipmentType.Weapon);
-			if (weaponSlot != null && weaponSlot.getItem() != null)
+			// 修正：檢查 selfActor.equipment 是否為 null，以防止 NullReferenceException (NRE)
+			if (selfActor.equipment != null)
 			{
-				Item equippedWeapon = weaponSlot.getItem();
-				// === 修正: 新增對 equippedWeapon.asset 的空值檢查 ===
-				if (equippedWeapon.asset != null && rangedWeaponIDs.Contains(equippedWeapon.asset.id))
+				var weaponSlot = selfActor.equipment.getSlot(EquipmentType.Weapon);
+				if (weaponSlot != null && weaponSlot.getItem() != null)
 				{
-					return false;
+					Item equippedWeapon = weaponSlot.getItem();
+					// === 修正: 新增對 equippedWeapon.asset 的空值檢查 ===
+					if (equippedWeapon.asset != null && rangedWeaponIDs.Contains(equippedWeapon.asset.id))
+					{
+						return false; // 裝備了遠程武器，故不觸發猛擊效果
+					}
 				}
 			}
 			// === 遠程武器檢查結束 ===
+			
 			string selfAtkStatus = "cdt_atk01";
 			float selfAtkDuration = 30f;
-			string selfDebuffStatus = "cdt_debuff01"; 
+			string selfDebuffStatus = "cdt_debuff01";	
 			string selfAddStatus = "fullpower";
 			float selfAddDuration = 2f;
+			
 			// 檢查自身是否沒有 cdt_atk01 且沒有 cdt_debuff01 狀態
 			if (!selfActor.hasStatus(selfAtkStatus) && !selfActor.hasStatus(selfDebuffStatus))
 			{
@@ -881,7 +902,7 @@ namespace ZeN_01
 			}
 			else
 			{
-				return false; 
+				return false;	
 			}
 		}
 		public static bool Skill0003_Effect(BaseSimObject pSelf, WorldTile pTile) 
@@ -4031,7 +4052,7 @@ namespace ZeN_01
 				float activationThreshold = 0.90f;
 
 				// 設定每次恢復的百分比 (例如：恢復最大生命值的 10%)
-				float recoveryPercentage = 0.05f;
+				float recoveryPercentage = 0.10f;
 
 				// 計算當前生命值百分比
 				float currentHealthPercentage = (float)actor.data.health / actor.getMaxHealth();
@@ -4075,7 +4096,7 @@ namespace ZeN_01
 				float activationThreshold = 0.90f;
 
 				// 設定每次恢復的百分比 (例如：恢復最大魔力值的 10%)
-				float recoveryPercentage = 0.05f;
+				float recoveryPercentage = 0.10f;
 
 				// 計算當前魔力值百分比
 				float currentManaPercentage = (float)actor.data.mana / actor.getMaxMana();
@@ -4127,7 +4148,7 @@ namespace ZeN_01
 			float activationThreshold = 0.90f;
 
 			// 設定每次恢復的百分比 (例如：恢復最大耐力值的 10%)
-			float recoveryPercentage = 0.05f;
+			float recoveryPercentage = 0.10f;
 
 			// 計算當前耐力值百分比
 			float currentStaminaPercentage = (float)actor.data.stamina / actor.getMaxStamina();
@@ -5336,6 +5357,54 @@ namespace ZeN_01
 			{
 				return false;
 			}
+			Kingdom currentKingdom = selfActor.kingdom;
+			if (currentKingdom != null)
+			{
+				bool isDemonKingExists = false; // 設置一個旗標
+				foreach (Actor kingdomUnit in currentKingdom.units)
+				{
+					// 跳過自己
+					if (kingdomUnit == null || kingdomUnit == selfActor)
+					{
+						continue;
+					}
+					// 優先檢查是否有 'other666' 特質
+					if (kingdomUnit.hasTrait("hope")||						//裁決專用標記特質
+						kingdomUnit.hasTrait("other6661")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6662")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6663")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6664")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6665")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6666")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6667")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6668")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("other6669")||					//魔王專用標記特質
+						kingdomUnit.hasTrait("extraordinary_authority")		//不死王帝標記特質
+						)
+					{
+						isDemonKingExists = true;
+						break;
+					}
+					// 檢查單位是否擁有任一魔王狀態
+					foreach (string demonKingStatusID in SevenDemonKingStatus_Brave)
+					{
+						if (kingdomUnit.hasStatus(demonKingStatusID))
+						{
+							isDemonKingExists = true; // 發現魔王，設置旗標
+							break; // 跳出內層迴圈
+						}
+					}
+					if (isDemonKingExists)
+					{
+						break; // 發現魔王，跳出外層迴圈
+					}
+				}
+				// 根據旗標結果判斷是否返回
+				if (isDemonKingExists)
+				{
+					return false;
+				}
+			}
 			bool isDemonKing = false;
 			foreach (string statusID in SevenDemonKingStatus_DemonKing)
 			{
@@ -6085,122 +6154,129 @@ namespace ZeN_01
 			return true;
 		}
 
-		public static bool Miracle(BaseSimObject pSelf, WorldTile pTile = null)
-		{// 聖光 聖光奇蹟 (Miracle) - 範圍內負面特質/狀態淨化
-			// 1. 基本安全檢查：確保 pSelf 及其 Actor 組件存在且存活
-			if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive())
-				return false;
-			Actor selfActor = pSelf.a;
+	public static bool Miracle(BaseSimObject pSelf, WorldTile pTile = null)
+	{// 聖光 聖光奇蹟 (Miracle) - 範圍內負面特質/狀態淨化
+		// 1. 基本安全檢查：確保 pSelf 及其 Actor 組件存在且存活
+		if (pSelf == null || pSelf.a == null || !pSelf.a.isAlive())
+			return false;
+		Actor selfActor = pSelf.a;
 
-			// 檢查施法者自身是否有冷卻狀態
-			string cooldownStatus = "cdt_buff00"; // 建議將冷卻 ID 補回
-			if (selfActor.hasStatus(cooldownStatus) || selfActor.hasStatus("cdt_debuff02"))
+		// 檢查施法者自身是否有冷卻狀態
+		string cooldownStatus = "cdt_cure04"; // 聖光治療冷卻 ID
+		if (selfActor.hasStatus(cooldownStatus) || selfActor.hasStatus("cdt_debuff02"))
+		{
+			return false; // 如果有冷卻狀態，則不執行任何效果
+		}
+
+		// 2. 設定特質/狀態清單和搜索範圍
+		string[] negativeTraits = new string[]
+		{
+			"infected", "plague", "mush_spores", "tumor_infection", "crippled", 
+			"eyepatch", "skin_burns", "madness", "desire_alien_mold", 
+			"desire_computer", "desire_golden_egg", "desire_harp"
+		};
+		// 要檢查的負面狀態清單 (例如：疾病、情緒異常)
+		string[] negativeStatuses = new string[]
+		{
+			"ash_fever", "cough", "cursed", "tantrum", "angry"
+		};
+
+		const int SEARCH_RADIUS = 30; // 搜索半徑 (例如 30 格)
+		
+		bool foundNegativeTrait = false;
+		WorldTile targetTile = null; // 儲存第一個符合條件的目標地塊
+		WorldTile centerTile = pTile ?? pSelf.current_tile;
+
+		// 3. 檢查施法者自身是否有負面效果
+		// 施法者自己不受 DivineLightTarget 清單限制，總是會檢查
+		// 3.1. 檢查自身特質
+		foreach (string traitId in negativeTraits)
+		{
+			if (selfActor.hasTrait(traitId))
 			{
-				return false; // 如果有冷卻狀態，則不執行任何效果
+				foundNegativeTrait = true;
+				targetTile = selfActor.current_tile; // 記錄自己的位置
+				break;
 			}
-
-			// 2. 設定特質/狀態清單和搜索範圍
-			string[] negativeTraits = new string[]
+		}
+		// 3.2. 檢查自身狀態 (只有在尚未找到特質時才檢查狀態)
+		if (!foundNegativeTrait)
+		{
+			foreach (string statusId in negativeStatuses)
 			{
-				"infected", "plague", "mush_spores", "tumor_infection", "crippled", 
-				"eyepatch", "skin_burns", "madness", "desire_alien_mold", 
-				"desire_computer", "desire_golden_egg", "desire_harp"
-			};
-			// 【新增】：要檢查的負面狀態清單
-			string[] negativeStatuses = new string[]
-			{
-				"ash_fever", "cough", "cursed", "tantrum", "angry"
-			};
-
-			const int SEARCH_RADIUS = 30; // 使用 DivineLight 的核心效果範圍作為搜索半徑
-			
-			bool foundNegativeTrait = false;
-			WorldTile targetTile = null; // 儲存目標地塊
-			WorldTile centerTile = pTile ?? pSelf.current_tile;
-
-			// 3. 遍歷範圍內單位，檢查是否存在負面特質或狀態
-			var allClosestUnits = Finder.getUnitsFromChunk(centerTile, SEARCH_RADIUS);
-			
-			// A. 首先檢查施法者自己
-			// 3.1. 檢查自身特質
-			foreach (string traitId in negativeTraits)
-			{
-				if (selfActor.hasTrait(traitId))
+				if (selfActor.hasStatus(statusId))
 				{
 					foundNegativeTrait = true;
 					targetTile = selfActor.current_tile; // 記錄自己的位置
 					break;
 				}
 			}
-			// 3.2. 檢查自身狀態 (只有在尚未找到特質時才檢查狀態)
-			if (!foundNegativeTrait)
-			{
-				foreach (string statusId in negativeStatuses)
-				{
-					if (selfActor.hasStatus(statusId))
-					{
-						foundNegativeTrait = true;
-						targetTile = selfActor.current_tile; // 記錄自己的位置
-						break;
-					}
-				}
-			}
+		}
 
-
-			// B. 如果自己沒有，則檢查周圍單位
-			if (!foundNegativeTrait)
+		// 4. 如果自己沒有，則檢查周圍的【友方】單位
+		if (!foundNegativeTrait)
+		{
+			var allClosestUnits = Finder.getUnitsFromChunk(centerTile, SEARCH_RADIUS);
+			
+			if (allClosestUnits.Any())
 			{
-				if (allClosestUnits.Any())
+				foreach (var unit in allClosestUnits)
 				{
-					foreach (var unit in allClosestUnits)
+					// 安全檢查：確保單位存在、是活著的 Actor，並且【不是敵對單位】
+					if (unit?.a != null && unit.a.isAlive() && unit.a.kingdom == selfActor.kingdom/*!selfActor.isEnemy(unit.a)*/) 
 					{
-						if (unit?.a != null && unit.a.isAlive())
+						// 新增過濾：如果目標物種在 DivineLightTarget 清單中，則跳過
+						if (DivineLightTarget.Contains(unit.a.asset.id))
 						{
-							// 檢查周圍單位的特質
-							foreach (string traitId in negativeTraits)
+							continue;
+						}
+
+						// 檢查周圍【友方】單位的特質
+						foreach (string traitId in negativeTraits)
+						{
+							if (unit.a.hasTrait(traitId))
 							{
-								if (unit.a.hasTrait(traitId))
+								foundNegativeTrait = true;
+								targetTile = unit.a.current_tile; // 記錄第一個目標的位置
+								break; // 找到特質，跳出內層迴圈
+							}
+						}
+						// 檢查周圍【友方】單位的狀態 (只有在尚未找到特質時才檢查狀態)
+						if (!foundNegativeTrait)
+						{
+							foreach (string statusId in negativeStatuses)
+							{
+								if (unit.a.hasStatus(statusId))
 								{
 									foundNegativeTrait = true;
 									targetTile = unit.a.current_tile; // 記錄第一個目標的位置
-									break; // 找到特質，跳出內層迴圈
-								}
-							}
-							// 檢查周圍單位的狀態 (只有在尚未找到特質時才檢查狀態)
-							if (!foundNegativeTrait)
-							{
-								foreach (string statusId in negativeStatuses)
-								{
-									if (unit.a.hasStatus(statusId))
-									{
-										foundNegativeTrait = true;
-										targetTile = unit.a.current_tile; // 記錄第一個目標的位置
-										break; // 找到狀態，跳出內層迴圈
-									}
+									break; // 找到狀態，跳出內層迴圈
 								}
 							}
 						}
-						if (foundNegativeTrait)
-						{
-							break; // 找到一個帶有負面效果的單位，立即跳出所有迴圈
-						}
+					}
+					if (foundNegativeTrait)
+					{
+						break; // 找到一個帶有負面效果的【友方】單位，立即跳出所有迴圈
 					}
 				}
 			}
-			
-			// 4. 根據檢查結果執行效果
-			if (foundNegativeTrait)
-			{
-				// 發現負面特質/狀態，觸發 DivineLight 淨化效果
-				DivineLight(pSelf, targetTile); // 使用記錄的 targetTile 作為施法中心
-				
-				// 5. 施加冷卻狀態
-				selfActor.addStatusEffect(cooldownStatus, 60f); // 施法者進入冷卻 60 秒
-				return true; // 成功觸發效果
-			}
-			
-			return false; // 沒有發現任何負面效果，不執行效果
 		}
+		
+		// 5. 根據檢查結果執行效果
+		if (foundNegativeTrait)
+		{
+			// 發現負面特質/狀態，觸發 DivineLightSmall 淨化效果
+			// DivineLightSmall 將以 targetTile 為中心施放，淨化目標及其周圍
+			DivineLightSmall(pSelf, targetTile); 
+			
+			// 施加冷卻狀態
+			selfActor.addStatusEffect(cooldownStatus, 30f); // 施法者進入冷卻 30 秒 (可調整)
+			return true; // 成功觸發效果
+		}
+		
+		return false; // 沒有發現任何負面效果，不執行效果
+	}
 		public static bool DestroyEvil(BaseSimObject pSelf, BaseSimObject pTarget, WorldTile pTile = null)
 		{// 聖光 毀滅邪惡 (DestroyEvil) - 攻擊觸發的聖光淨化
 			// 1. 基本安全檢查：施法者和目標是否有效且存活
@@ -6253,11 +6329,7 @@ namespace ZeN_01
 				// 觸發 DivineLight 淨化效果
 				// 【關鍵修正】：聖光以目標所在位置為中心釋放
 				WorldTile targetCenterTile = pTarget.current_tile; // 使用 pTarget 的地塊
-				DivineLight(selfActor, targetCenterTile); // 施法者仍然是 selfActor，中心地塊改為 targetCenterTile
-				
-				// 由於這是一個 Action_attack 觸發，通常不需要冷卻時間，
-				// 除非您想限制它的發動頻率 (例如使用 Randy.randomChance 或 addStatusEffect)。
-				
+				DivineLightBig(selfActor, targetCenterTile); // 施法者仍然是 selfActor，中心地塊改為 targetCenterTile
 				return true; // 成功觸發效果
 			}
 			
@@ -6402,7 +6474,14 @@ namespace ZeN_01
 			string oppositeTraitID = ""; // 另一方持有的馴服等級 ID
 			// 判斷施法者類型，並設定參數
 			bool isNecromancer = selfActor.asset.id == "necromancer";
-			if (isNecromancer)
+			if (selfActor.hasTrait("extraordinary_authority"))
+			{
+				maxRange = 60;
+				currentTraitID = "undead_servant2";
+				oppositeTraitID = "undead_servant";
+				isNecromancer = true;
+			}
+			else if (isNecromancer)
 			{
 				// 死靈法師 (Necromancer) - 高階馴服
 				maxRange = 5;
@@ -6448,6 +6527,11 @@ namespace ZeN_01
 						continue; // 不是目標亡靈單位，跳過
 					}
 
+					// 檢查是否已經是【使徒】 (apostle)
+					if (targetActor.hasTrait("apostle"))
+					{
+						continue;
+					}
 					// ===== 核心互搶邏輯：從最高級別開始檢查 =====
 
 					// A. 檢查是否已經是【高階僕從】 (undead_servant2)
@@ -6556,6 +6640,51 @@ namespace ZeN_01
 						}
 					}
 					targetActor.removeTrait("slave");
+					if (targetActor.hasTrait("evillaw_moneylaw"))
+					{
+						targetActor.removeTrait("evillaw_moneylaw");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_sleeping"))
+					{
+						targetActor.removeTrait("evillaw_sleeping");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_starvation"))
+					{
+						targetActor.removeTrait("evillaw_starvation");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_devour"))
+					{
+						targetActor.removeTrait("evillaw_devour");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_seduction"))
+					{
+						targetActor.removeTrait("evillaw_seduction");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_tantrum"))
+					{
+						targetActor.removeTrait("evillaw_tantrum");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("evillaw_ew"))
+					{
+						targetActor.removeTrait("evillaw_ew");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("pro_king"))
+					{
+						targetActor.removeTrait("pro_king");
+						targetActor.data.favorite = false;
+					}
+					if (targetActor.hasTrait("pro_leader"))
+					{
+						targetActor.removeTrait("pro_leader");
+						targetActor.data.favorite = false;
+					}
 					targetActor.finishStatusEffect("soul");
 					targetActor.addTrait(currentTraitID); // 添加當前施法者等級的契約
 					targetActor.data.health += 9999; // 恢復大量生命值
@@ -7307,7 +7436,7 @@ namespace ZeN_01
 					}
 				}
 			}
-			if (master == null || !master.isAlive())
+			if (master == null || !master.isAlive()|| !master.hasTrait("evillaw_tgc"))
 			{// 主人死亡之後的後續處裡
 				// 確保 master 已經被賦值為清單中的值，如果之前沒有成功從 custom_data 恢復
 				if (listOfTamedBeasts.ContainsKey(beast))
@@ -7342,10 +7471,7 @@ namespace ZeN_01
 				
 				const float STAMINA_TRIGGER_PERCENTAGE = 0.99f;
 				const float STAMINA_RESTORE_PERCENTAGE = 0.01f;
-				
-				//const float NUTRITION_TRIGGER_PERCENTAGE = 0.99f;
-				//const int NUTRITION_RESTORE_AMOUNT = 1;
-				//const int MAX_NUTRITION_VALUE = 100;
+
 				float masterMaxHealth = master.getMaxHealth();
 				float beastMaxHealth = beast.getMaxHealth(); // 獲取僕從最大血量
 				float healthToRestore = masterMaxHealth * HEALTH_RESTORE_PERCENTAGE;
@@ -7387,46 +7513,40 @@ namespace ZeN_01
 					beast.data.stamina -= Mathf.RoundToInt(staminaToRestore);
 					if (beast.data.stamina < 0) beast.data.stamina = 0;
 				}
-				
-			/*	float nutritionMaster = master.data.nutrition;
-				if (nutritionMaster / MAX_NUTRITION_VALUE < NUTRITION_TRIGGER_PERCENTAGE)
+				if (master.equipment != null) // <-- 新增的 null 檢查：確保 master 單位有裝備組件
 				{
-					master.data.nutrition = Mathf.Min(MAX_NUTRITION_VALUE, master.data.nutrition + NUTRITION_RESTORE_AMOUNT);
-					beast.data.nutrition -= NUTRITION_RESTORE_AMOUNT;
-					if (beast.data.nutrition < 0) beast.data.nutrition = 0;
-				}*/
-
-				//武器賦予邏輯
-				var weaponSlot = master.equipment.getSlot(EquipmentType.Weapon);
-				if (weaponSlot != null)
-				{
-					var currentItem = weaponSlot.getItem();
-					if (currentItem == null) 
+					//武器賦予邏輯
+					var weaponSlot = master.equipment.getSlot(EquipmentType.Weapon);
+					if (weaponSlot != null)
 					{
-						// 創建並裝備法杖
-						var weaponAsset = AssetManager.items.get("necromancer_staff");	
-						if (weaponAsset != null)
+						var currentItem = weaponSlot.getItem();
+						if (currentItem == null) 
 						{
-							var weaponInstance = World.world.items.generateItem(pItemAsset: weaponAsset);
-							
-							if (weaponInstance != null)
+							// 創建並裝備法杖
+							var weaponAsset = AssetManager.items.get("necromancer_staff");	
+							if (weaponAsset != null)
 							{
-								weaponInstance.addMod("power5");
-								weaponInstance.addMod("truth5");
-								weaponInstance.addMod("protection5");
-								weaponInstance.addMod("speed5");
-								weaponInstance.addMod("balance5");
-								weaponInstance.addMod("health5");
-								weaponInstance.addMod("finesse5");
-								weaponInstance.addMod("mastery5");
-								weaponInstance.addMod("knowledge5");
-								weaponInstance.addMod("sharpness5");
-								// 由於 currentItem == null，這裡可以直接設置
-								weaponSlot.setItem(weaponInstance, master);
+								var weaponInstance = World.world.items.generateItem(pItemAsset: weaponAsset);
+								
+								if (weaponInstance != null)
+								{
+									weaponInstance.addMod("power5");
+									weaponInstance.addMod("truth5");
+									weaponInstance.addMod("protection5");
+									weaponInstance.addMod("speed5");
+									weaponInstance.addMod("balance5");
+									weaponInstance.addMod("health5");
+									weaponInstance.addMod("finesse5");
+									weaponInstance.addMod("mastery5");
+									weaponInstance.addMod("knowledge5");
+									weaponInstance.addMod("sharpness5");
+									// 由於 currentItem == null，這裡可以直接設置
+									weaponSlot.setItem(weaponInstance, master);
+								}
 							}
 						}
+						// 否則，如果主人已經持有武器 (currentItem != null)，則不做任何操作，保留該武器。
 					}
-					// 否則，如果主人已經持有武器 (currentItem != null)，則不做任何操作，保留該武器。
 				}
 			}
 			// === 雙向同步：戶籍與關係 ===
@@ -7718,6 +7838,10 @@ namespace ZeN_01
 					beast.subspecies.addTrait("heat_resistance");
 					master.finishStatusEffect("tantrum");
 					master.finishStatusEffect("angry");
+					if (master.data.kills < 666)
+					{
+						master.data.kills = 666;
+					}
 				}
 				if (!master.hasTrait("evillaw_starvation"))
 				{// 如果主人沒有 惡食法 特質
@@ -7971,7 +8095,7 @@ namespace ZeN_01
 					}
 				}
 			}
-			if (master == null || !master.isAlive())
+			if (master == null || !master.isAlive() || !master.hasTrait("extraordinary_authority"))
 			{// 主人死亡之後的後續處裡
 				// 確保 master 已經被賦值為清單中的值，如果之前沒有成功從 custom_data 恢復
 				if (listOfTamedBeasts.ContainsKey(beast))
@@ -7999,18 +8123,17 @@ namespace ZeN_01
 				const float HEALTH_TRIGGER_PERCENTAGE = 0.99f;
 				const float HEALTH_RESTORE_PERCENTAGE = 0.01f;
 				const float MIN_BEAST_HEALTH_PERCENTAGE = 0.05f;
+				
 				const float MANA_TRIGGER_PERCENTAGE = 0.99f;
 				const float MANA_RESTORE_PERCENTAGE = 0.01f;
+				
 				const float STAMINA_TRIGGER_PERCENTAGE = 0.99f;
 				const float STAMINA_RESTORE_PERCENTAGE = 0.01f;
-			//	const float NUTRITION_TRIGGER_PERCENTAGE = 0.99f;
-			//	const int NUTRITION_RESTORE_AMOUNT = 1;
-			//	const int MAX_NUTRITION_VALUE = 100;
+
 				float masterMaxHealth = master.getMaxHealth();
 				float beastMaxHealth = beast.getMaxHealth(); // 獲取僕從最大血量
 				float healthToRestore = masterMaxHealth * HEALTH_RESTORE_PERCENTAGE;
 				int healthCost = Mathf.RoundToInt(healthToRestore); // 治療所需的實際血量成本
-				// 計算僕從必須維持的最低血量 (1% 的 Max Health)
 				float minBeastHealthThreshold = beastMaxHealth * MIN_BEAST_HEALTH_PERCENTAGE;
 				// 檢查 1: 主人是否需要治療
 				// 檢查 2: 僕從支付成本後，是否仍高於最低血量閾值
@@ -8048,45 +8171,40 @@ namespace ZeN_01
 					beast.data.stamina -= Mathf.RoundToInt(staminaToRestore);
 					if (beast.data.stamina < 0) beast.data.stamina = 0;
 				}
-			/*	float nutritionMaster = master.data.nutrition;
-				if (nutritionMaster / MAX_NUTRITION_VALUE < NUTRITION_TRIGGER_PERCENTAGE)
+				if (master.equipment != null) // <-- 新增的 null 檢查：確保 master 單位有裝備組件
 				{
-					master.data.nutrition = Mathf.Min(MAX_NUTRITION_VALUE, master.data.nutrition + NUTRITION_RESTORE_AMOUNT);
-					beast.data.nutrition -= NUTRITION_RESTORE_AMOUNT;
-					if (beast.data.nutrition < 0) beast.data.nutrition = 0;
-				}*/
-
-				//武器賦予邏輯
-				var weaponSlot = master.equipment.getSlot(EquipmentType.Weapon);
-				if (weaponSlot != null)
-				{
-					var currentItem = weaponSlot.getItem();
-					if (currentItem == null) 
+					//武器賦予邏輯
+					var weaponSlot = master.equipment.getSlot(EquipmentType.Weapon);
+					if (weaponSlot != null)
 					{
-						// 創建並裝備法杖
-						var weaponAsset = AssetManager.items.get("necromancer_staff");	
-						if (weaponAsset != null)
+						var currentItem = weaponSlot.getItem();
+						if (currentItem == null) 
 						{
-							var weaponInstance = World.world.items.generateItem(pItemAsset: weaponAsset);
-							
-							if (weaponInstance != null)
+							// 創建並裝備法杖
+							var weaponAsset = AssetManager.items.get("necromancer_staff");	
+							if (weaponAsset != null)
 							{
-								weaponInstance.addMod("power5");
-								weaponInstance.addMod("truth5");
-								weaponInstance.addMod("protection5");
-								weaponInstance.addMod("speed5");
-								weaponInstance.addMod("balance5");
-								weaponInstance.addMod("health5");
-								weaponInstance.addMod("finesse5");
-								weaponInstance.addMod("mastery5");
-								weaponInstance.addMod("knowledge5");
-								weaponInstance.addMod("sharpness5");
-								// 由於 currentItem == null，這裡可以直接設置
-								weaponSlot.setItem(weaponInstance, master);
+								var weaponInstance = World.world.items.generateItem(pItemAsset: weaponAsset);
+								
+								if (weaponInstance != null)
+								{
+									weaponInstance.addMod("power5");
+									weaponInstance.addMod("truth5");
+									weaponInstance.addMod("protection5");
+									weaponInstance.addMod("speed5");
+									weaponInstance.addMod("balance5");
+									weaponInstance.addMod("health5");
+									weaponInstance.addMod("finesse5");
+									weaponInstance.addMod("mastery5");
+									weaponInstance.addMod("knowledge5");
+									weaponInstance.addMod("sharpness5");
+									// 由於 currentItem == null，這裡可以直接設置
+									weaponSlot.setItem(weaponInstance, master);
+								}
 							}
 						}
+						// 否則，如果主人已經持有武器 (currentItem != null)，則不做任何操作，保留該武器。
 					}
-					// 否則，如果主人已經持有武器 (currentItem != null)，則不做任何操作，保留該武器。
 				}
 			}
 			// === 雙向同步：戶籍與關係 ===
@@ -8336,11 +8454,6 @@ namespace ZeN_01
 				if (master.hasStatus("frozen"))
 				{// 清除主人負面狀態
 					master.finishStatusEffect("frozen");
-				}
-				if (beast.hasStatus("angry"))
-				{// 自身憤怒情緒處理
-					beast.finishStatusEffect("angry"); 
-					beast.addStatusEffect("stunned", 0.001f);
 				}
 				if (beast.data.money > 0)
 				{// 納貢 金錢
@@ -9922,8 +10035,11 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			act.data.health += 9999; // 恢復大量生命值
 
 			// 10. 為新單位施加臨時狀態效果
-			act.addStatusEffect("invincible", 10); 
-			act.addStatusEffect("antibody", 10); 
+			if (!originalActor.subspecies.hasTrait("genetic_mirror"))
+			{
+				act.addStatusEffect("invincible", 4); 
+			}
+			act.addStatusEffect("antibody", 4); 
 
 			// 11. 更多酷炫的生成效果
 			EffectsLibrary.spawnExplosionWave(pTile.posV3, 1f, 1f); 
@@ -9931,13 +10047,14 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 
 			// === 完成後扣減單位當前金錢 與 戰利品 50% ===
 			int moneyToDeduct = (int)(act.data.money * 0.50f);
-			//int lootToDeduct = (int)(act.data.loot * 0.50f);
+			if (originalActor.subspecies.hasTrait("genetic_mirror"))
+			{
+				 moneyToDeduct = (int)(act.data.money * 0.90f);
+			};
 			act.data.money -= moneyToDeduct;
-			//act.data.loot -= lootToDeduct;
-			if (act.data.money < 0 || act.data.loot < 0 )
+			if (act.data.money < 0)
 			{
 				act.data.money = 0;
-				act.data.loot = 0;
 			}
 			return true; // 表示效果成功執行
 		}
@@ -11583,7 +11700,9 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			if (!selfActor.hasStatus("calm") && !selfActor.hasStatus("tantrum"))
 			{				
 				selfActor.addStatusEffect("tantrum", 5f);
+				selfActor.data.happiness = -100;
 				selfActor.removeTrait("strong_minded");
+				selfActor.clan.removeTrait("iron_will");
 				if (UnityEngine.Random.value < 0.333f)
 				{
 					selfActor.addStatusEffect("angry", 5f); // 指定狀態
@@ -11612,7 +11731,7 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			// ** 臨時安全措施：如果 pTile 為 null，則直接返回，避免崩潰 **
 			if (pTile == null)
 			{
-					return false;
+				return false;
 			}
 			if (selfActor.subspecies == null || !selfActor.subspecies.hasTrait("prefrontal_cortex"))
 			{
@@ -11671,10 +11790,6 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			{
 				return false;
 			}
-			//if (!selfActor.hasTrait("evillaw_tantrum"))
-			//{
-			//	return false;
-			//}
 			
 			// ****** 第一部分：管理 'calm' (冷靜) 狀態 ******
 			// 這部分邏輯不變，用來在特定情況下提供寧靜狀態
@@ -11798,6 +11913,8 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			{
 				selfActor.addStatusEffect("tantrum", 4f);// 冷却状态
 				selfActor.removeTrait("strong_minded");// 冷却状态
+				selfActor.clan.removeTrait("iron_will");
+				selfActor.data.happiness = -100;
 				if (UnityEngine.Random.value < 0.333f) // 使用 Random.value 來實現 50% 機率
 				{
 					selfActor.addStatusEffect("angry", 4f); // 指定狀態
@@ -12028,7 +12145,7 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			{
 				return false;
 			}
-			var allClosestUnits = Finder.getUnitsFromChunk(pTile, 5);
+			var allClosestUnits = Finder.getUnitsFromChunk(pTile, 15);
 			if (allClosestUnits.Any())
 			{
 				foreach (var unit in allClosestUnits)
@@ -18138,7 +18255,7 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			"zombie_dragon"
 		};
 		private static readonly HashSet<string> DivineLightTarget = new HashSet<string>
-		{// 不死生物 (清單)
+		{// 聖光攻擊目標 (清單)
 			"jumpy_skull",
 			"ghost",
 			"skeleton",
@@ -18792,8 +18909,34 @@ public static bool Extend_Effect0(BaseSimObject pSelf, WorldTile pTile)
 			}
 			return true;
 		}
-		public static bool DivineLight(BaseSimObject pTarget, WorldTile pTile = null)
-		{// 聖光 調用效果
+		public static bool DivineLightSmall(BaseSimObject pTarget, WorldTile pTile = null)
+		{// 聖光(小) 調用效果
+			if (pTarget == null || !pTarget.isActor() || !pTarget.a.isAlive())
+				return false;
+			Actor selfActor = pTarget.a;
+			//if (selfActor.hasStatus("") || selfActor.hasStatus(""))
+			//{
+				int AURA_RADIUS1 = 0;	// 視覺效果大小,數字太高也不會變大,但會偏移
+				int AURA_RADIUS2 = 3;	// 核心效果範圍,最高到30
+				WorldTile centerTile = pTile ?? pTarget.current_tile;
+
+				// 【靜態調用修正 1：視覺效果】
+				World.world.loopWithBrush(centerTile,
+				Brush.get(AURA_RADIUS1, "circ_"),
+				new PowerActionWithID(Traits01Actions.divineLightFX), // 使用您的靜態類別名稱
+				null);
+
+				// 【靜態調用修正 2：核心效果】
+				World.world.loopWithBrush(centerTile,
+				Brush.get(AURA_RADIUS2, "circ_"),
+				new PowerActionWithID(Traits01Actions.drawDivineLight), // 使用您的靜態類別名稱
+				null);
+				
+				return true;
+			//}
+		}
+		public static bool DivineLightBig(BaseSimObject pTarget, WorldTile pTile = null)
+		{// 聖光(小) 調用效果
 			if (pTarget == null || !pTarget.isActor() || !pTarget.a.isAlive())
 				return false;
 			Actor selfActor = pTarget.a;

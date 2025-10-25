@@ -34,7 +34,7 @@ namespace ZeN_01
 		public static void init()
 		{//－－－－－－－－－－－－－－－－－－－－－特質區－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－//
 		//測試用位置
-			ActorTrait test0000 = new ActorTrait();
+		/*	ActorTrait test0000 = new ActorTrait();
 			test0000.id = "test0000";
 			test0000.path_icon = "ui/icons/Skill/test0000";
 			test0000.group_id = "cognitive";
@@ -47,7 +47,7 @@ namespace ZeN_01
 			AssetManager.traits.add(test0000);
 			addToLocalizedLibrary("ch",test0000.id, "test000C", "test000C");
 			addToLocalizedLibrary("en",test0000.id, "test000E", "test000E");
-			test0000.unlock(true);
+			test0000.unlock(true);*/
 
 			#region 職務類別	Profession
 			//帝王 King ★ 2
@@ -1220,7 +1220,7 @@ namespace ZeN_01
 			Skill0314.action_get_hit = combinedAction_0314C;
 
 			AssetManager.traits.add(Skill0314);
-			addToLocalizedLibrary("ch",Skill0314.id, "神聖術:懲戒術", "正義執行，懲戒邪惡");//中文名稱與介紹
+			addToLocalizedLibrary("ch",Skill0314.id, "神聖術:懲戒", "正義執行，懲戒邪惡");//中文名稱與介紹
 			addToLocalizedLibrary("en",Skill0314.id, "Holy Arts:Punishing", "Execute justice and punish evil.");//英文名稱與介紹
 			Skill0314.unlock(true);
 
@@ -1439,7 +1439,7 @@ namespace ZeN_01
 			new WorldAction(Traits01Actions.applyEnvyStatus),
 			new WorldAction(Traits01Actions.RapidHappiness2),
 			new WorldAction(Traits01Actions.EvilPoniardGet),
-			//new WorldAction(Traits01Actions.addFavorite1), 
+			new WorldAction(Traits01Actions.addFavorite1), 
 			new WorldAction(Traits01Actions.TraittAddRemove0));
 
 			Skill0402.action_attack_target = new AttackAction(Traits01Actions.Devour_Effect1);

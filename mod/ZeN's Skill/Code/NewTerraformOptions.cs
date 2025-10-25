@@ -385,7 +385,7 @@ namespace ZeN_01
 					remove_water = true,				//移除水
 					remove_tornado = true,				//移除旋風
 					set_fire = true,					//設置火焰
-					add_heat = 404,						//添加熱量
+					add_heat = 1000,					//添加熱量
 					add_burned = true,					//添加燒毀
 					transform_to_wasteland = false,		//廢土化
 					applies_to_high_flyers = true,		//適用於高飛者

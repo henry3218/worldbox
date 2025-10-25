@@ -206,7 +206,7 @@ namespace ZeN_01
 			"evillaw_ew", "slave", "apostle", "undead_servant", "undead_servant2", "evil", "monste_nest001", "monste_nest002",
 			"monste_nest003", "monste_nest004", "monste_nest005", "monste_nest006", "monste_nest008",
 			"monste_nest009", "monste_nest010", "monste_nest011", "monste_nest012", "monste_nest013",
-			"monste_nest014"};
+			"monste_nest014", "add_cursed"};
 			foreach (string traitID in evillaw_Traits)
 			{
 				SetTraitPairOpposites(traitID, "holyarts_justice");
@@ -230,8 +230,8 @@ namespace ZeN_01
 			foreach (string traitID in sin72_Traits)
 			{
 				SetTraitPairOpposites(traitID, "apostle");
-				SetTraitPairOpposites(traitID, "undead_servant");
-				SetTraitPairOpposites(traitID, "undead_servant2");
+				//SetTraitPairOpposites(traitID, "undead_servant");
+				//SetTraitPairOpposites(traitID, "undead_servant2");
 			}
 
 			SetTraitPairOpposites("apostle", "b0002");

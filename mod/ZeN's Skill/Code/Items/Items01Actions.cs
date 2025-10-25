@@ -6071,11 +6071,15 @@ namespace ZeN_01
 						{// 目標持有指定特質
 							continue;
 						}
+						// 檢查是否已經是【使徒】 (apostle)
+						if (targetActor.hasTrait("apostle"))
+						{
+							continue;
+						}
 						if (targetActor.army != null)
 						{
 							targetActor.stopBeingWarrior(); 
 						}
-                        
 						// 王國同步
 						if (selfActor.kingdom != null)
 						{
@@ -6321,7 +6325,7 @@ namespace ZeN_01
 			{
 				return false;
 			}
-			int range = 20; // 設定影響範圍
+			int range = 60; // 設定影響範圍
 			string SoulStatusID = "soul"; // 詛咒的狀態ID
 			float SoulDuration = 666f; // 詛咒狀態的持續時間，例如 60 秒 (可調整)
 			bool effectAppliedToAnyone = false; // 追蹤是否成功對至少一個目標應用了效果

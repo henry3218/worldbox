@@ -316,7 +316,7 @@ namespace ZeN_01
 			WDK2.tier = StatusTier.Basic;
 			WDK2.tier = StatusTier.Basic;
 			WDK2.base_stats = new BaseStats();	
-			//WDK2.base_stats.set("multiplier_damage", 5.0f);
+			WDK2.base_stats.set("multiplier_damage", 5.0f);
 			WDK2.base_stats.set("damage_range", 55f);								//傷害區間 [未顯示]
 			WDK2.base_stats.set("armor", 99f);
 			WDK2.base_stats.set("multiplier_speed", 3.0f);
@@ -743,15 +743,13 @@ namespace ZeN_01
 			#region 不死帝 ex_undead_emperor
 			var UndeadEmperor = new StatusAsset();
 			UndeadEmperor.id = "ex_undead_emperor";								 //ID
-			UndeadEmperor.duration = 10f;									 //倒數計時
+			UndeadEmperor.duration = 60f;									 //倒數計時
 			UndeadEmperor.path_icon = "ui/icons/Effects1/undead/UndeadEmperor";				//效果圖標
 			UndeadEmperor.locale_id = $"status_title_{UndeadEmperor.id}";	//區域設定ID					非必要
 			UndeadEmperor.locale_description = $"status_description_{UndeadEmperor.id}";	//區域設定描述非必要			非必要
-			UndeadEmperor.tier = StatusTier.Basic;
+			UndeadEmperor.tier = StatusTier.None;//Advanced None Basic
 			//UndeadEmperor.remove_status = new string[] { "weaken", "stunned", "confused", "burning", "frozen", "slowness" };
-			UndeadEmperor.base_stats = new BaseStats();
-			//UndeadEmperor.action_finish = (WorldAction)Delegate.Combine(UndeadEmperor.action_finish, new WorldAction(UndeadEmperor_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
+			//UndeadEmperor.base_stats = new BaseStats();
 			addToLocalizedLibrary("ch",UndeadEmperor.id, "不死大帝", "屹立於眾多不死者之上的不死王者。");
 			addToLocalizedLibrary("en",UndeadEmperor.id, "Undead Emperor", "The undead king who stands tall above the multitude of undead.");
 			AssetManager.status.add(UndeadEmperor);
@@ -770,8 +768,6 @@ namespace ZeN_01
 			UndeadLord.base_stats.set("intelligence", 150f);
 			UndeadLord.base_stats.set("loyalty_traits", 1300f);
 			UndeadLord.base_stats.set("multiplier_supply_timer", -10f);
-			//UndeadLord.action_finish = (WorldAction)Delegate.Combine(UndeadLord.action_finish, new WorldAction(UndeadLord_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadLord.id, "不死領主", "不死國度的領地管理者");
 			addToLocalizedLibrary("en",UndeadLord.id, "Undead Lord", "Territory Manager of the Undead Kingdom.");
 			AssetManager.status.add(UndeadLord);
@@ -790,8 +786,6 @@ namespace ZeN_01
 			UndeadLord01.base_stats.set("intelligence", 50f);
 			UndeadLord01.base_stats.set("loyalty_traits", 650f);
 			UndeadLord01.base_stats.set("multiplier_supply_timer", -10f);
-			//UndeadLord01.action_finish = (WorldAction)Delegate.Combine(UndeadLord01.action_finish, new WorldAction(UndeadLord01_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadLord01.id, "不死領主", "不死國度的領地管理者");
 			addToLocalizedLibrary("en",UndeadLord01.id, "Undead Lord", "Territory Manager of the Undead Kingdom.");
 			AssetManager.status.add(UndeadLord01);
@@ -808,8 +802,6 @@ namespace ZeN_01
 			UndeadCaptain.base_stats.set("armor", 40f);
 			UndeadCaptain.base_stats.set("multiplier_speed", 0.25f);
 			UndeadCaptain.base_stats.set("projectiles", 5f);
-			//UndeadCaptain.action_finish = (WorldAction)Delegate.Combine(UndeadCaptain.action_finish, new WorldAction(UndeadCaptain_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadCaptain.id, "不死騎士", "不死者軍團的統率者");
 			addToLocalizedLibrary("en",UndeadCaptain.id, "Undead Knight", "Commander of the Undead Legion");
 			AssetManager.status.add(UndeadCaptain);
@@ -826,8 +818,6 @@ namespace ZeN_01
 			UndeadCaptain01.base_stats.set("armor", 10f);
 			UndeadCaptain01.base_stats.set("multiplier_speed", 0.10f);
 			UndeadCaptain01.base_stats.set("projectiles", 3f);
-			//UndeadCaptain01.action_finish = (WorldAction)Delegate.Combine(UndeadCaptain01.action_finish, new WorldAction(UndeadCaptain01_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadCaptain01.id, "不死騎士", "不死者軍團的統率者");
 			addToLocalizedLibrary("en",UndeadCaptain01.id, "Undead Knight", "Commander of the Undead Legion");
 			AssetManager.status.add(UndeadCaptain01);
@@ -844,8 +834,6 @@ namespace ZeN_01
 			UndeadWarrior.base_stats.set("armor", 20f);
 			UndeadWarrior.base_stats.set("multiplier_speed", 0.10f);
 			UndeadWarrior.base_stats.set("projectiles", 2f);
-			//UndeadWarrior.action_finish = (WorldAction)Delegate.Combine(UndeadWarrior.action_finish, new WorldAction(UndeadWarrior_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadWarrior.id, "不死戰士", "不死者軍團的兵卒");
 			addToLocalizedLibrary("en",UndeadWarrior.id, "Undead Knight", "Soldiers of the Undead Legion");
 			AssetManager.status.add(UndeadWarrior);
@@ -862,25 +850,21 @@ namespace ZeN_01
 			UndeadWarrior01.base_stats.set("armor", 10f);
 			UndeadWarrior01.base_stats.set("multiplier_speed", 0.05f);
 			UndeadWarrior01.base_stats.set("projectiles", 1f);
-			//UndeadWarrior01.action_finish = (WorldAction)Delegate.Combine(UndeadWarrior01.action_finish, new WorldAction(UndeadWarrior01_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",UndeadWarrior01.id, "不死戰士", "不死者軍團的兵卒");
 			addToLocalizedLibrary("en",UndeadWarrior01.id, "Undead Knight", "Soldiers of the Undead Legion");
 			AssetManager.status.add(UndeadWarrior01);
 
 			var DarkBlessing = new StatusAsset();
 			DarkBlessing.id = "darkblessing";								 //ID
-			DarkBlessing.duration = 10f;									 //倒數計時
+			DarkBlessing.duration = 60f;									 //倒數計時
 			DarkBlessing.path_icon = "ui/icons/Effects1/undead/DarkBlessing";				//效果圖標
 			DarkBlessing.locale_id = $"status_title_{DarkBlessing.id}";	//區域設定ID					非必要
 			DarkBlessing.locale_description = $"status_description_{DarkBlessing.id}";	//區域設定描述非必要			非必要
-			DarkBlessing.tier = StatusTier.Basic;
+			DarkBlessing.tier = StatusTier.None;
 			DarkBlessing.remove_status = new string[] { "weaken", "slowness", "cough", "ash_fever", "frozen", "burning", "poisoned", "stunned", "sleeping", "spell_silence", "drowning", "confused" };
 			DarkBlessing.base_stats = new BaseStats();
 			DarkBlessing.base_stats.addTag("immunity_fire");
 			DarkBlessing.base_stats.addTag("immunity_cold");
-			//DarkBlessing.action_finish = (WorldAction)Delegate.Combine(DarkBlessing.action_finish, new WorldAction(DarkBlessing_Manage));
-			// 如果這個狀態沒有任何對立或要移除的狀態，可以將陣列留空 `new string[] { }`
 			addToLocalizedLibrary("ch",DarkBlessing.id, "黑暗賜福", "來自不死帝王的賜福，得以抵禦一切負面影響");
 			addToLocalizedLibrary("en",DarkBlessing.id, "Dark Blessing", "The blessing from the Immortal Emperor can resist all negative influences");
 			AssetManager.status.add(DarkBlessing);
