@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using PeerlessOverpoweringWarrior.code.Config;
 
 namespace PeerlessOverpoweringWarrior.code
 {
@@ -156,19 +157,19 @@ namespace PeerlessOverpoweringWarrior.code
             // 检查是否是特定的高级境界突破
             if (newTrait == "Warrior91" || newTrait == "Warrior91+") // 合道境
             {
-                return PeerlessOverpoweringWarrior.code.Config.WarriorConfig.NotifyHarmonyBreakthrough;
+                return WarriorConfig.NotifyHarmonyBreakthrough;
             }
             else if (newTrait == "Warrior92" || newTrait == "Warrior92+") // 斩我境
             {
-                return PeerlessOverpoweringWarrior.code.Config.WarriorConfig.NotifyZhanWoBreakthrough;
+                return WarriorConfig.NotifyZhanWoBreakthrough;
             }
             else if (newTrait == "Warrior93" || newTrait == "Warrior93+") // 武极境
             {
-                return PeerlessOverpoweringWarrior.code.Config.WarriorConfig.NotifyWuJiBreakthrough;
+                return WarriorConfig.NotifyWuJiBreakthrough;
             }
             else if (newTrait == "FormationRealm6") // 玄真境
             {
-                return PeerlessOverpoweringWarrior.code.Config.WarriorConfig.NotifyXuanZhenBreakthrough;
+                return WarriorConfig.NotifyXuanZhenBreakthrough;
             }
             
             // 其他境界突破默认显示通知
@@ -198,7 +199,7 @@ namespace PeerlessOverpoweringWarrior.code
         public static void ShowFormationRealm6Notification(Actor actor)
         {
             // 检查是否需要显示通知
-            if (!PeerlessOverpoweringWarrior.code.Config.WarriorConfig.NotifyXuanZhenBreakthrough)
+            if (!WarriorConfig.NotifyXuanZhenBreakthrough)
             {
                 return; // 根据配置跳过通知
             }

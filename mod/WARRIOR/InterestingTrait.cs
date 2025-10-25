@@ -1,8 +1,6 @@
 using HarmonyLib;
 using PeerlessOverpoweringWarrior.code;
 using NeoModLoader.api;
-using System.IO;
-using PeerlessOverpoweringWarrior.code;
 
 namespace PeerlessOverpoweringWarrior
 {
